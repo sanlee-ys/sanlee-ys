@@ -15,10 +15,11 @@ In Employee Platforms, responsible for the product lifecycle, migration, and aut
 enterprise collaboration platforms (SharePoint Online & OneDrive) across all lines of business.
 
 ## Stack
-Python · Java · Anthropic API · AWS · Kubernetes · Docker · Jira · Microsoft 365
+**Now:** Python · Anthropic API · AWS · Jira · Microsoft 365  
+**Earlier (SWE):** Python · Java · Kafka · event-driven microservices · CockroachDB · Cassandra · MySQL · Kubernetes · Docker · OpenTelemetry
 
 ## Background
-Seoul National University MBA · AWS Certified Cloud Practitioner · U.S. Army National Guard veteran (Qatar, OEF)
+Seoul National University MBA · B.A. Information Technology, Rutgers–New Brunswick · AWS Certified Cloud Practitioner · U.S. Army National Guard veteran (Qatar, OEF)
 
 Outside work: photography, hiking, and supervised by a Scottish Fold named Sango.
 
