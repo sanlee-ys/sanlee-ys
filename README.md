@@ -1,9 +1,16 @@
-<img src="images/san.jpeg" alt="San Lee" width="160" align="right" style="border-radius: 12px;" />
-
-# Hi, I'm San 👋
-
-Technical PM at JPMorgan Chase with an engineering background (~8 years as a software 
-engineer before moving to product). Building AI tools on the side to stay hands-on.
+<table border="0">
+  <tr>
+    <td valign="top">
+      <h1>Hi, I'm San 👋</h1>
+      <p>Technical PM at JPMorgan Chase with an engineering background (~8 years as a
+      software engineer before moving to product). Building AI tools on the side to
+      stay hands-on.</p>
+    </td>
+    <td width="190" valign="top">
+      <img src="images/san.jpeg" alt="San Lee" width="170" />
+    </td>
+  </tr>
+</table>
 
 ## What I'm building
 
@@ -30,9 +37,9 @@ Outside work: photography, hiking, and supervised by a Scottish Fold named Sango
 ## Meet the supervisor 🐱
 
 <p>
-  <img src="images/sango-pumpkin.jpeg" alt="Sango in a pumpkin costume" width="220" />
-  <img src="images/sango-scarf.jpeg" alt="Sango wearing a scarf" width="220" />
-  <img src="images/sango-nap.jpeg" alt="Sango taking a nap" width="220" />
+  <img src="images/sango-pumpkin.jpeg" alt="Sango in a pumpkin costume" width="240" height="240" />
+  <img src="images/sango-scarf.jpeg" alt="Sango wearing a scarf" width="240" height="240" />
+  <img src="images/sango-nap.jpeg" alt="Sango taking a nap" width="240" height="240" />
 </p>
 
 *Sango — Chief Nap Officer, occasional pumpkin.*
