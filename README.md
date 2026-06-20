@@ -31,6 +31,17 @@ SNU MBA · AWS Certified Cloud Practitioner · U.S. Army National Guard veteran 
 
 Outside work: photography, hiking, and supervised by a Scottish Fold named Sango.
 
+A few frames I've shot and edited (mostly on VSCO) — full gallery at **[vsco.co/sanlee](https://vsco.co/sanlee)**:
+
+<p>
+  <img src="images/photo-pavilion-spring.jpeg" alt="Pavilion over a pond in spring bloom" width="260" height="260" />
+  <img src="images/photo-pavilion-bw.jpeg" alt="Pavilion framed between pillars, black and white" width="260" height="260" />
+  <img src="images/photo-skyline.jpeg" alt="Manhattan skyline across the Hudson, black and white" width="260" height="260" />
+  <img src="images/photo-light.jpeg" alt="Spiral light-and-architecture installation" width="260" height="260" />
+  <img src="images/photo-trail.jpeg" alt="Trail overlook in the mountains" width="260" height="260" />
+  <img src="images/photo-ftx.jpeg" alt="Inside a helicopter during a field training exercise" width="260" height="260" />
+</p>
+
 ## Meet the supervisor 🐱
 
 <p>
