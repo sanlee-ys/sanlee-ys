@@ -16,7 +16,7 @@ enterprise collaboration platforms (SharePoint Online & OneDrive) across all lin
 
 ## Stack
 **Now:** Python · Anthropic API · AWS · Jira · Microsoft 365  
-**Earlier (SWE):** Python · Java · Kafka · event-driven microservices · CockroachDB · Cassandra · MySQL · Kubernetes · Docker · OpenTelemetry · CI/CD
+**Earlier (SWE):** Python · Java · Kafka · event-driven microservices · CockroachDB · Cassandra · MySQL · Kubernetes · Docker · OpenTelemetry
 
 ## Background
 Seoul National University MBA · B.A. Information Technology, Rutgers–New Brunswick · AWS Certified Cloud Practitioner · U.S. Army National Guard veteran (Qatar, OEF)
