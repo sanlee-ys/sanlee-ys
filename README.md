@@ -15,10 +15,10 @@ On the Employee Platforms team, where we own SharePoint Online and OneDrive for 
 product across content creation and collaboration.
 
 ## Stack
-Python · Anthropic API · AWS · Kubernetes · Docker · Jira · Microsoft 365
+Python · Java · Anthropic API · AWS · Kubernetes · Docker · Jira · Microsoft 365
 
 ## Background
-SNU MBA · AWS Certified Cloud Practitioner · U.S. Army National Guard veteran (Qatar, OEF)
+Seoul National University MBA · AWS Certified Cloud Practitioner · U.S. Army National Guard veteran (Qatar, OEF)
 
 Outside work: photography, hiking, and supervised by a Scottish Fold named Sango.
 
