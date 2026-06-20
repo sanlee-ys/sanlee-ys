@@ -1,7 +1,7 @@
 # Hi, I'm San 👋
 
-Technical PM at JPMorgan Chase with an engineering background (~8 years as a software 
-engineer before moving to product). Building AI tools on the side to stay hands-on.
+Senior Product Associate at JPMorgan Chase. Started in network operations, spent most of 
+my time as a software engineer, now in product. Building AI tools on the side to stay hands-on.
 
 ## What I'm building
 
@@ -11,8 +11,8 @@ using structured JSON output via the Anthropic API. Built a real eval harness: 9
 accuracy on domain, 79% on category, with per-label F1 and a full misclassification log.
 
 ## Day job
-Currently own SharePoint Online and OneDrive for 300k+ employees at JPMorgan Chase. 
-Prior to that: infrastructure engineering, ZTP, CI/CD modernization.
+On the Employee Platforms team, where we own SharePoint Online and OneDrive for the firm — 
+product across content creation and collaboration.
 
 ## Stack
 Python · Anthropic API · AWS · Kubernetes · Docker · Jira · Microsoft 365
