@@ -1,16 +1,7 @@
-<table border="0">
-  <tr>
-    <td valign="top">
-      <h1>Hi, I'm San 👋</h1>
-      <p>Technical PM at JPMorgan Chase with an engineering background (~8 years as a
-      software engineer before moving to product). Building AI tools on the side to
-      stay hands-on.</p>
-    </td>
-    <td width="190" valign="top">
-      <img src="images/san.jpeg" alt="San Lee" width="170" />
-    </td>
-  </tr>
-</table>
+# Hi, I'm San 👋
+
+Technical PM at JPMorgan Chase with an engineering background (~8 years as a software 
+engineer before moving to product). Building AI tools on the side to stay hands-on.
 
 ## What I'm building
 
