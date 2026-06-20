@@ -1,3 +1,5 @@
+<img src="images/san.jpeg" alt="San Lee" width="160" align="right" style="border-radius: 12px;" />
+
 # Hi, I'm San 👋
 
 Technical PM at JPMorgan Chase with an engineering background (~8 years as a software 
@@ -24,3 +26,13 @@ Python · Anthropic API · AWS · Kubernetes · Docker · Jira · Microsoft 365
 MBA · AWS Certified Cloud Practitioner · U.S. Army National Guard veteran (Qatar, OEF)
 
 Outside work: photography, hiking, and supervised by a Scottish Fold named Sango.
+
+## Meet the supervisor 🐱
+
+<p>
+  <img src="images/sango-pumpkin.jpeg" alt="Sango in a pumpkin costume" width="220" />
+  <img src="images/sango-scarf.jpeg" alt="Sango wearing a scarf" width="220" />
+  <img src="images/sango-nap.jpeg" alt="Sango taking a nap" width="220" />
+</p>
+
+*Sango — Chief Nap Officer, occasional pumpkin.*
