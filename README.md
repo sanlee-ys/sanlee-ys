@@ -11,8 +11,8 @@ using structured JSON output via the Anthropic API. Built a real eval harness: 9
 accuracy on domain, 79% on category, with per-label F1 and a full misclassification log.
 
 ## Day job
-On the Employee Platforms team, where we own SharePoint Online and OneDrive for the firm — 
-product across content creation and collaboration.
+In Employee Platforms, responsible for the product lifecycle, migration, and automation of 
+enterprise collaboration platforms (SharePoint Online & OneDrive) across all lines of business.
 
 ## Stack
 Python · Java · Anthropic API · AWS · Kubernetes · Docker · Jira · Microsoft 365
