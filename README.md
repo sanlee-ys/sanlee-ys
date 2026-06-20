@@ -22,3 +22,5 @@ Python · Anthropic API · AWS · Kubernetes · Docker · Jira · Microsoft 365
 
 ## Background
 MBA · AWS Certified Cloud Practitioner · U.S. Army National Guard veteran (Qatar, OEF)
+
+Outside work: photography, hiking, and supervised by a Scottish Fold named Sango.
