@@ -4,22 +4,20 @@ Senior Product Associate at JPMorgan Chase. Started in network operations, spent
 my time as a software engineer, now in product. Building AI tools on the side to stay hands-on.
 
 What started as a way to dust off years of accumulated engineering rust turned into something 
-more — a way to build on what I've picked up over the years and turn it into work I can 
-actually stand behind technically, while pushing me into the domains I'm trying to get at my 
-disposal.
+more. A way to build on what I've picked up over the years and turn it into work I can actually 
+stand behind technically, while pushing me into the domains I'm trying to get at my disposal.
 
-In other words — I'm having fun with it.
+I'm having fun building while being able to express creativity, which feed into each other.
 
-It's also my disclaimer: Claude's helping me move a lot faster. Things like setting up 
-boilerplate or working in a `.venv` without tripping over it took real time to learn. Now I'm 
-orchestrating tightly scoped sessions and letting Claude do most of the rest.
+It's also my disclaimer: Claude's helping me move a lot faster. Even the little things like 
+setting up  boilerplate or working in a `.venv` without tripping over it took real time to 
+learn. Now I'm  orchestrating tightly scoped sessions and letting Claude do most of the rest.
 
-I'll admit I have some serious gaps in my SWE knowledge. If you couldn't tell by now — I've had 
+I'll admit I have some serious gaps in my SWE knowledge. If you couldn't tell by now, I've had 
 something of an odd career path. That's another story, but the bet I'm hedging *with* (and not 
 against) is AI.
 
-AI is Thanos, and it's telling me I couldn't live with my own failure — and that it led me 
-back to it.
+AI is Thanos, and it's telling me I couldn't live with my own failure, so it led me back to it.
 
 I'm only half-joking.
 
