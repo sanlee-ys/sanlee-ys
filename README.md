@@ -1,13 +1,11 @@
 # Hi, I'm San 👋
 
-Senior Product Associate at JPMorgan Chase. Started in network operations, spent most of 
+Senior Product Associate at JPMorganChase. Started in network operations, spent most of 
 my time as a software engineer, now in product. Building AI tools on the side to stay hands-on.
 
 What started as a way to dust off years of accumulated engineering rust turned into something 
 more. A way to build on what I've picked up over the years and turn it into work I can actually 
 stand behind technically, while pushing me into the domains I'm trying to get at my disposal.
-
-I'm having fun building while being able to express creativity, which feed into each other.
 
 It's also my disclaimer: Claude's helping me move a lot faster. Even the little things like 
 setting up  boilerplate or working in a `.venv` without tripping over it took real time to 
