@@ -8,9 +8,11 @@ something more of a journey to build upon what I've picked up over the years and
 into something I could stand by from a technical aspect while exposing me to some of the
 domains I'm trying to wield at my disposal.
 
-It's my disclaimer. Claude's helping me by moving much faster. Things like setting up the
-boilerplate and working with a `.venv` without tripping over it took time to learn. Now I'm
-orchestrating sessions that are tightly scoped and Claude's doing everything for me.
+In other words - I'm having fun with it.
+
+It's also my disclaimer. Claude's helping me by moving much faster. Things like setting up the
+boilerplate and working with a `.venv` without tripping over it took time to learn and implement. 
+Now I'm orchestrating sessions that are tightly scoped and Claude's doing everything for me.
 
 I admint I have some serious gaps in SWE knowledge. If you couldn't tell by now - I've had 
 something of an odd career path. That's another story, but the one I'm hedging myself with
