@@ -3,25 +3,25 @@
 Senior Product Associate at JPMorgan Chase. Started in network operations, spent most of 
 my time as a software engineer, now in product. Building AI tools on the side to stay hands-on.
 
-What started as a way to dust off the years of accumulated engineering rust turned into 
-something more of a journey to build upon what I've picked up over the years and turn it
-into something I could stand by from a technical aspect while exposing me to some of the
-domains I'm trying to wield at my disposal.
+What started as a way to dust off years of accumulated engineering rust turned into something 
+more — a way to build on what I've picked up over the years and turn it into work I can 
+actually stand behind technically, while pushing me into the domains I'm trying to get at my 
+disposal.
 
-In other words - I'm having fun with it.
+In other words — I'm having fun with it.
 
-It's also my disclaimer. Claude's helping me by moving much faster. Things like setting up the
-boilerplate and working with a `.venv` without tripping over it took time to learn and implement. 
-Now I'm orchestrating sessions that are tightly scoped and Claude's doing everything for me.
+It's also my disclaimer: Claude's helping me move a lot faster. Things like setting up 
+boilerplate or working in a `.venv` without tripping over it took real time to learn. Now I'm 
+orchestrating tightly scoped sessions and letting Claude do most of the rest.
 
-I admint I have some serious gaps in SWE knowledge. If you couldn't tell by now - I've had 
-something of an odd career path. That's another story, but the one I'm hedging myself with
-(and not against) is AI. 
+I'll admit I have some serious gaps in my SWE knowledge. If you couldn't tell by now — I've had 
+something of an odd career path. That's another story, but the bet I'm hedging *with* (and not 
+against) is AI.
 
-AI is Thanos and it's telling me that I couldn't live with my own failure and it lead me
+AI is Thanos, and it's telling me I couldn't live with my own failure — and that it led me 
 back to it.
 
-I'm only half-joking. 
+I'm only half-joking.
 
 ## What I'm building
 
@@ -39,6 +39,10 @@ accuracy on domain, 79% on category, with per-label F1 and a full misclassificat
 Plain-language notes on the concepts behind these projects — tool use, RAG, evals, 
 embeddings, model routing. Three ways to read them: a searchable page, a MkDocs site, and 
 an interactive D3 concept map that links each idea to the ones it builds on.
+
+**[architecture](https://github.com/sanlee-ys/architecture)** — 
+System-level architecture decisions (ADRs) that span more than one project — the home for 
+the cross-cutting choices that don't belong in any single repo.
 
 **[notes-api](https://github.com/sanlee-ys/notes-api)** — 
 A learning-focused Spring Boot 4 REST API: layered architecture, JPA, DTO validation, and 
