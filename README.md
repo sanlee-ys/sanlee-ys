@@ -3,6 +3,24 @@
 Senior Product Associate at JPMorgan Chase. Started in network operations, spent most of 
 my time as a software engineer, now in product. Building AI tools on the side to stay hands-on.
 
+What started as a way to dust off the years of accumulated engineering rust turned into 
+something more of a journey to build upon what I've picked up over the years and turn it
+into something I could stand by from a technical aspect while exposing me to some of the
+domains I'm trying to wield at my disposal.
+
+It's my disclaimer. Claude's helping me by moving much faster. Things like setting up the
+boilerplate and working with a `.venv` without tripping over it took time to learn. Now I'm
+orchestrating sessions that are tightly scoped and Claude's doing everything for me.
+
+I admint I have some serious gaps in SWE knowledge. If you couldn't tell by now - I've had 
+something of an odd career path. That's another story, but the one I'm hedging myself with
+(and not against) is AI. 
+
+AI is Thanos and it's telling me that I couldn't live with my own failure and it lead me
+back to it.
+
+I'm only half-joking. 
+
 ## What I'm building
 
 **[kb-agent](https://github.com/sanlee-ys/kb-agent)** — 
