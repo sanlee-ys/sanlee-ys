@@ -15,6 +15,15 @@ LLM classifier for public defense news snippets. Assigns category and operationa
 using structured JSON output via the Anthropic API. Built a real eval harness: 97.3% 
 accuracy on domain, 79% on category, with per-label F1 and a full misclassification log.
 
+**[learning-notes](https://github.com/sanlee-ys/learning-notes)** — 
+Plain-language notes on the concepts behind these projects — tool use, RAG, evals, 
+embeddings, model routing. Three ways to read them: a searchable page, a MkDocs site, and 
+an interactive D3 concept map that links each idea to the ones it builds on.
+
+**[notes-api](https://github.com/sanlee-ys/notes-api)** — 
+A learning-focused Spring Boot 4 REST API: layered architecture, JPA, DTO validation, and 
+centralized error handling. My "get back into Java" project.
+
 ## Day job
 In Employee Platforms, responsible for the product lifecycle, migration, and automation of 
 enterprise collaboration platforms (SharePoint Online & OneDrive) across all lines of business.
