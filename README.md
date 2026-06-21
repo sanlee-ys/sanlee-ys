@@ -5,6 +5,11 @@ my time as a software engineer, now in product. Building AI tools on the side to
 
 ## What I'm building
 
+**[kb-agent](https://github.com/sanlee-ys/kb-agent)** — 
+Personal, living knowledge base over your projects and their dependencies. A local 
+Claude RAG + tool-use agent you can ask questions, or point at your projects' own 
+running services to have it call them directly.
+
 **[defense-news-classifier](https://github.com/sanlee-ys/defense-news-classifier)** — 
 LLM classifier for public defense news snippets. Assigns category and operational domain 
 using structured JSON output via the Anthropic API. Built a real eval harness: 97.3% 
