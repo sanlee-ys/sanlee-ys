@@ -15,7 +15,7 @@ I'll admit I have some serious gaps in my SWE knowledge. If you couldn't tell by
 something of an odd career path. That's another story, but the bet I'm hedging *with* (and not 
 against) is AI.
 
-AI is Thanos, and it's telling me I couldn't live with my own failure, so it led me back to it.
+AI _is_ Thanos. It's telling me I couldn't live with my own failure and that it led me back to it.
 
 I'm only half-joking.
 
