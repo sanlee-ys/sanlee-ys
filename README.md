@@ -8,7 +8,7 @@ more. A way to build on what I've picked up over the years and turn it into work
 stand behind technically, while pushing me into the domains I'm trying to explore.
 
 It's also my disclaimer: Claude's helping me move a lot faster. Even the little things like 
-setting up  boilerplate or working in a `.venv` without tripping over it took real time to 
+setting up boilerplate or working in a `.venv` without tripping over it took real time to 
 learn. Now I'm orchestrating tightly scoped sessions and letting Claude do most of the rest.
 
 I'm having fun while I'm (re)learning on-the-go. If you couldn't tell by now, I've had 
@@ -24,8 +24,9 @@ running services to have it call them directly.
 
 **[defense-news-classifier](https://github.com/sanlee-ys/defense-news-classifier)** — 
 LLM classifier for public defense news snippets. Assigns category and operational domain 
-using structured JSON output via the Anthropic API. Built a real eval harness: 97.3% 
-accuracy on domain, 79% on category, with per-label F1 and a full misclassification log.
+using structured JSON output via the Anthropic API. Built a real eval harness, measured on 
+real, human-labeled public text: 88.9% accuracy on both category and operational domain 
+(macro-F1 0.906 and 0.894), with per-label F1 and a full misclassification log.
 
 **[learning-notes](https://github.com/sanlee-ys/learning-notes)** — 
 Plain-language notes on the concepts behind these projects — tool use, RAG, evals, 
