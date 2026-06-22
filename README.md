@@ -11,13 +11,9 @@ It's also my disclaimer: Claude's helping me move a lot faster. Even the little 
 setting up  boilerplate or working in a `.venv` without tripping over it took real time to 
 learn. Now I'm orchestrating tightly scoped sessions and letting Claude do most of the rest.
 
-I'll admit I have some serious gaps in my SWE knowledge. If you couldn't tell by now, I've had 
+I'm having fun while I'm (re)learning on-the-go. If you couldn't tell by now, I've had 
 something of an odd career path. That's another story, but the bet I'm hedging *with* (and not 
 against) is AI.
-
-AI _is_ Thanos. It's telling me I couldn't live with my own failure and that it led me back to it.
-
-I'm only half-joking.
 
 ## What I'm building
 
