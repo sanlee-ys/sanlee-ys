@@ -38,8 +38,7 @@ System-level architecture decisions (ADRs) that span more than one project — t
 the cross-cutting choices that don't belong in any single repo.
 
 **[notes-api](https://github.com/sanlee-ys/notes-api)** — 
-A learning-focused Spring Boot 4 REST API: layered architecture, JPA, DTO validation, and 
-centralized error handling. My "get back into Java" project.
+Python/FastAPI notes REST API with SQLAlchemy; async tag enrichment via BackgroundTasks seam to the defense-news-classifier.
 
 ## Day job
 In Employee Platforms, responsible for the product lifecycle, migration, and automation of 
