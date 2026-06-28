@@ -1,7 +1,7 @@
 # Hi, I'm San 👋
 
-Senior Product Associate at JPMorganChase. Started in network operations, spent most of 
-my time as a software engineer, now in product. Building AI tools on the side to stay hands-on.
+Network operations to software engineering to product. I'm a Senior Product Associate at
+JPMorganChase now, building AI tools on the side to stay hands-on.
 
 What started as a way to dust off years of accumulated engineering rust turned into something 
 more. A way to build on what I've picked up over the years and turn it into work I can actually 
