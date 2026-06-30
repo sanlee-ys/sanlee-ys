@@ -15,6 +15,8 @@ I'm having fun while I'm (re)learning on-the-go. If you couldn't tell by now, I'
 something of an odd career path. That's another story, but the bet I'm hedging *with* (and not 
 against) is AI.
 
+**See it as one system → [sanlee.me](https://sanlee.me).** The repos below are the parts. The site is how they fit together, the decisions behind each call, and an honest note on how it was built.
+
 ## What I'm building
 
 **[kb-agent](https://github.com/sanlee-ys/kb-agent)** — 
