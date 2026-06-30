@@ -1,4 +1,8 @@
-# Hi, I'm San 👋
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/banner-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/banner-light.svg">
+  <img alt="San Lee · From the wires up: network operations to software engineering to product" src="images/banner-dark.svg">
+</picture>
 
 Network operations to software engineering to product. I'm a Senior Product Associate at
 JPMorganChase now, building AI tools on the side to stay hands-on.
@@ -55,23 +59,10 @@ Seoul National University MBA · B.A. Information Technology, Rutgers–New Brun
 
 Outside work: photography, hiking, and supervised by a Scottish Fold named Sango.
 
-A few frames I've shot and edited (mostly on VSCO) — full gallery at **[vsco.co/sanlee](https://vsco.co/sanlee)**:
+<p align="center"><a href="https://www.linkedin.com/in/leesan/">LinkedIn</a> · <a href="https://www.instagram.com/sanleeeee/">Instagram</a> · <a href="https://vsco.co/sanlee">VSCO</a> · <a href="https://sanlee.me">Portfolio</a></p>
 
-<p>
-  <img src="images/photo-pavilion-spring.jpeg" alt="Pavilion over a pond in spring bloom" width="240" height="240" />
-  <img src="images/photo-light.jpeg" alt="Spiral light-and-architecture installation" width="240" height="240" />
-  <img src="images/photo-jeju.jpeg" alt="Basalt sea cliffs on Jeju Island" width="240" height="240" />
-  <img src="images/photo-lanterns.jpeg" alt="Lotus lanterns at a temple" width="240" height="240" />
-  <img src="images/photo-trail.jpeg" alt="Trail overlook in the mountains" width="240" height="240" />
-  <img src="images/photo-ftx.jpeg" alt="Inside a helicopter during a field training exercise" width="240" height="240" />
+<p align="center">
+  <img src="images/sango-boop.jpeg" alt="Sango, a Scottish Fold, asleep" width="240" height="240" />
 </p>
 
-## Meet the supervisor 🐱
-
-<p>
-  <img src="images/sango-pumpkin.jpeg" alt="Sango in a pumpkin costume" width="240" height="240" />
-  <img src="images/sango-scarf.jpeg" alt="Sango wearing a scarf" width="240" height="240" />
-  <img src="images/sango-boop.jpeg" alt="Booping Sango's paw while he sleeps, black and white" width="240" height="240" />
-</p>
-
-*Sango — Chief Nap Officer, occasional pumpkin.*
+<p align="center"><em>Sango, Chief Nap Officer.</em></p>

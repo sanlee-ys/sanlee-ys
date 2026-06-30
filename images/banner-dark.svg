@@ -1,0 +1,26 @@
+<svg viewBox="0 0 1280 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bannerTitle bannerDesc">
+  <title id="bannerTitle">San Lee · Systems &amp; Product</title>
+  <desc id="bannerDesc">Masthead for San Lee's GitHub profile. Headline "San Lee" over the tagline "From the wires up: network operations to software engineering to product." Proof legend: eval-driven development, contract-first integration, AI product judgment, scope discipline, RAG / tool-use.</desc>
+  <defs>
+    <radialGradient id="blob" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6ea8fe" stop-opacity="0.12"/>
+      <stop offset="70%" stop-color="#6ea8fe" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="frame">
+      <rect x="0" y="0" width="1280" height="360" rx="14"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect x="0" y="0" width="1280" height="360" fill="#0f1115"/>
+    <ellipse cx="230" cy="101" rx="360" ry="360" fill="url(#blob)"/>
+    <ellipse cx="1050" cy="79" rx="340" ry="340" fill="url(#blob)"/>
+    <ellipse cx="768" cy="295" rx="300" ry="300" fill="url(#blob)"/>
+  </g>
+  <g font-family="'Geist','Inter','Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif" text-anchor="start">
+    <text x="80" y="158" font-size="92" font-weight="600" letter-spacing="-1.8" fill="#e7eaf0">San Lee</text>
+    <rect x="82" y="184" width="56" height="2" fill="#6ea8fe"/>
+    <text x="80" y="236" font-size="26" font-weight="400" letter-spacing="-0.26" fill="#e7eaf0">From the wires up: network operations to software engineering to product.</text>
+    <text x="80" y="298" font-size="15" font-weight="400" letter-spacing="0.15" fill="#9aa3b2">eval-driven development<tspan fill="#6ea8fe"> · </tspan>contract-first integration<tspan fill="#6ea8fe"> · </tspan>AI product judgment<tspan fill="#6ea8fe"> · </tspan>scope discipline<tspan fill="#6ea8fe"> · </tspan>RAG / tool-use</text>
+  </g>
+  <rect x="1" y="1" width="1278" height="358" rx="13" fill="none" stroke="#232a35" stroke-width="1.5"/>
+</svg>
