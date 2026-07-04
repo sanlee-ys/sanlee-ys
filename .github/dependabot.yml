@@ -1,0 +1,17 @@
+# Dependabot: automated dependency-update PRs.
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates
+#
+# NOTE: this repo is a GitHub profile README with no code and no workflows —
+# there is nothing to scan today, and no CodeQL workflow was added for the
+# same reason (no source in any supported language). This github-actions
+# block is forward-looking and currently inert: if a workflow is ever added
+# here, Dependabot is already watching it rather than being forgotten later.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci"
