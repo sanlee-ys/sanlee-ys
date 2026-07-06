@@ -32,16 +32,26 @@ running services to have it call them directly.
 LLM classifier for public defense news snippets. Assigns category and operational domain 
 using structured JSON output via the Anthropic API. Built a real eval harness, measured on 
 real, human-labeled public text: 88.9% accuracy on both category and operational domain 
-(macro-F1 0.906 and 0.894), with per-label F1 and a full misclassification log.
+(macro-F1 0.906 and 0.894), with per-label F1 and a full misclassification log. v2 added a 
+BM25 retrieval layer and measured it: the lift was marginal, so I shipped the negative 
+result instead of reaching for embeddings.
 
 **[learning-notes](https://github.com/sanlee-ys/learning-notes)** — 
 Plain-language notes on the concepts behind these projects — tool use, RAG, evals, 
-embeddings, model routing. Three ways to read them: a searchable page, a MkDocs site, and 
-an interactive D3 concept map that links each idea to the ones it builds on.
+embeddings, model routing, and how I steer AI agents. Four ways to read them: a searchable 
+page, a MkDocs site, an interactive D3 concept map that links each idea to the ones it 
+builds on, and kb-agent chat that answers from the notes with citations.
+
+**[claude-ops](https://github.com/sanlee-ys/claude-ops)** — 
+The operating layer for the Claude-assisted workflow the rest of this page describes: a 
+credential-guard hook hardened across four documented leak incidents in one week, blameless 
+postmortems with the failures left in, a pre-commit redline guard, and the working 
+agreements that scope each session.
 
 **[architecture](https://github.com/sanlee-ys/architecture)** — 
-System-level architecture decisions (ADRs) that span more than one project — the home for 
-the cross-cutting choices that don't belong in any single repo.
+System-level architecture decisions (ADRs) that span more than one project, plus the system 
+portal: a generated MkDocs site that pulls every repo's docs and a roadmap dashboard into 
+one place on GitHub Pages.
 
 **[notes-api](https://github.com/sanlee-ys/notes-api)** — 
 Python/FastAPI notes REST API with SQLAlchemy; async tag enrichment via BackgroundTasks seam to the defense-news-classifier.
