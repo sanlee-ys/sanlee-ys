@@ -47,11 +47,12 @@ portal that pulls every repo's docs into one place on GitHub Pages.
 Python/FastAPI notes REST API with SQLAlchemy; async tag enrichment via BackgroundTasks seam to the defense-news-classifier.
 
 ## Day job
-In Employee Platforms, responsible for the product lifecycle, migration, and automation of 
-enterprise collaboration platforms (SharePoint Online & OneDrive) across all lines of business.
+In Employee Platforms, I run product for SharePoint Online and OneDrive — the collaboration 
+platforms every JPMorganChase line of business works in. The work: lifecycle, migration, and 
+automating the operations around both.
 
 ## Stack
-**Now:** Python · Anthropic API · AWS · Jira · Microsoft 365  
+**Now:** Python · FastAPI · Anthropic API (tool use, MCP, evals) · GitHub Actions · vanilla JS + D3 · Microsoft 365 · Jira  
 **Earlier (SWE):** Python · Java · Kafka · event-driven microservices · CockroachDB · Cassandra · MySQL · Kubernetes · Docker · OpenTelemetry
 
 ## Background
