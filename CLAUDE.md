@@ -50,3 +50,10 @@ Same bar as the portfolio (see `portfolio` repo conventions): survives a
 skeptical senior engineer, owns the solo scale and the AI assist, right-sized
 claims, no hype. Negative results are stated as such ("the lift was marginal,
 so I shipped the negative result").
+
+The AI assist is stated as **method, not confession** (decided 2026-07-11;
+canonical framing = the portfolio colophon): San sets the direction, the
+contracts, and the bar; Claude does most of the typing; the evals and
+postmortems are the proof. No apologetic framing ("full disclosure",
+"disclaimer") and no self-labels ("agentic orchestration") — describe the
+practice, name Claude plainly.
