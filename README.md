@@ -26,15 +26,21 @@ against) is AI.
 **[kb-agent](https://github.com/sanlee-ys/kb-agent)** — 
 Personal, living knowledge base over your projects and their dependencies. A local 
 Claude RAG + tool-use agent you can ask questions, or point at your projects' own 
-running services to have it call them directly.
+running services to have it call them directly. It also ships as an MCP server, so any 
+MCP host can plug the KB's tools in directly, and the agent's KB-grounded answers carry 
+source citations.
 
 **[defense-news-classifier](https://github.com/sanlee-ys/defense-news-classifier)** — 
 LLM classifier for public defense news snippets. Assigns category and operational domain 
 using structured JSON output via the Anthropic API. Built a real eval harness, measured on 
-real, human-labeled public text: 88.9% accuracy on both category and operational domain 
-(macro-F1 0.906 and 0.894), with per-label F1 and a full misclassification log. v2 added a 
-BM25 retrieval layer and measured it: the lift was marginal, so I shipped the negative 
-result instead of reaching for embeddings.
+real, human-labeled public text, with per-label F1 and a full misclassification log; the 
+gold-set evals now gate CI (an offline gate on every PR, a scheduled live capability gate). 
+Current numbers, after an eval-gated migration to Sonnet 5: 88.9% category and 94.4% 
+operational domain accuracy (macro-F1 0.888 and 0.947). v2 added a BM25 retrieval layer 
+and measured it: marginal lift on Sonnet 4.6, and a reproduced 9.3-point domain regression 
+against the stronger Sonnet 5 baseline. Both times the eval said no, so I shipped the 
+negative result instead of reaching for embeddings, and the retrieval path stays decoupled 
+from the migrated call.
 
 **[learning-notes](https://github.com/sanlee-ys/learning-notes)** — 
 Plain-language notes on the concepts behind these projects — tool use, RAG, evals, 
