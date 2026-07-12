@@ -28,6 +28,22 @@ Concretely, when updating a project blurb:
   true), the deciding PR's "Downstream surfaces" list should name this README;
   if you are that session, sweep it here.
 
+## Length bar: this is a skim surface (hard rule)
+
+Decided 2026-07-11 after the shipped-facts refresh made the classifier blurb
+absorb repo-README density (four decimal numbers + CI architecture in one
+blurb).
+
+- **Each project blurb: at most 3 sentences.** What it is, the headline
+  number(s) if any, one distinctive finding. Detailed figures (per-label F1,
+  macro-F1 pairs, gate architecture, mechanism) live in the repo's own README
+  — the blurb links, it does not restate.
+- **Intro: at most 2 paragraphs** before "What I'm building".
+- **Adding a shipped fact means compressing, not appending.** New facts
+  displace old detail; the blurb's length stays at the bar. If the new fact
+  can't fit without losing the old headline, the repo's README is the right
+  home for one of them.
+
 ## Voice
 
 Same bar as the portfolio (see `portfolio` repo conventions): survives a
