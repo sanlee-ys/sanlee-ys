@@ -8,10 +8,10 @@ Network operations to software engineering to product. I'm a Senior Product Asso
 JPMorganChase now, building AI tools on the side to stay hands-on.
 
 These projects started as a way to dust off years of accumulated engineering rust and turned 
-into work I can actually stand behind technically. They're built by directing Claude: I set 
-the direction, the contracts, and the bar; it does most of the typing; the evals and 
-postmortems are the proof. Odd career path, I know. The bet I'm hedging *with* (and not 
-against) is AI.
+into work I can actually stand behind technically. 
+
+They're built by directing Claude: I set the direction, the contracts, and the bar; it 
+does most of the typing; the evals and postmortems are the proof. 
 
 **See it as one system → [sanlee.me](https://sanlee.me).** The repos below are the parts. The site is how they fit together, the decisions behind each call, and an honest note on how it was built.
 
