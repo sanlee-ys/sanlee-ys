@@ -7,17 +7,10 @@
 Network operations to software engineering to product. I'm a Senior Product Associate at
 JPMorganChase now, building AI tools on the side to stay hands-on.
 
-What started as a way to dust off years of accumulated engineering rust turned into something 
-more. A way to build on what I've picked up over the years and turn it into work I can actually 
-stand behind technically, while pushing me into the domains I'm trying to explore.
-
-It's also my disclaimer: Claude's helping me move a lot faster. Even the little things like 
-setting up boilerplate or working in a `.venv` without tripping over it took real time to 
-learn. Now I'm orchestrating tightly scoped sessions and letting Claude do most of the rest.
-
-I'm having fun while I'm (re)learning on-the-go. If you couldn't tell by now, I've had 
-something of an odd career path. That's another story, but the bet I'm hedging *with* (and not 
-against) is AI.
+These projects started as a way to dust off years of accumulated engineering rust and turned 
+into work I can actually stand behind technically. Full disclosure: Claude's helping me move a 
+lot faster — I orchestrate tightly scoped sessions and let it do most of the rest. Odd career 
+path, I know. The bet I'm hedging *with* (and not against) is AI.
 
 **See it as one system → [sanlee.me](https://sanlee.me).** The repos below are the parts. The site is how they fit together, the decisions behind each call, and an honest note on how it was built.
 
@@ -25,39 +18,29 @@ against) is AI.
 
 **[kb-agent](https://github.com/sanlee-ys/kb-agent)** — 
 Personal, living knowledge base over your projects and their dependencies. A local 
-Claude RAG + tool-use agent you can ask questions, or point at your projects' own 
-running services to have it call them directly. It also ships as an MCP server, so any 
-MCP host can plug the KB's tools in directly, and the agent's KB-grounded answers carry 
-source citations.
+Claude RAG + tool-use agent you can query or point at your projects' running services, 
+and now an MCP server any MCP host can mount. Answers cite their KB sources.
 
 **[defense-news-classifier](https://github.com/sanlee-ys/defense-news-classifier)** — 
-LLM classifier for public defense news snippets. Assigns category and operational domain 
-using structured JSON output via the Anthropic API. Built a real eval harness, measured on 
-real, human-labeled public text, with per-label F1 and a full misclassification log; the 
-gold-set evals now gate CI (an offline gate on every PR, a scheduled live capability gate). 
-Current numbers, after an eval-gated migration to Sonnet 5: 88.9% category and 94.4% 
-operational domain accuracy (macro-F1 0.888 and 0.947). v2 added a BM25 retrieval layer 
-and measured it: marginal lift on Sonnet 4.6, and a reproduced 9.3-point domain regression 
-against the stronger Sonnet 5 baseline. Both times the eval said no, so I shipped the 
-negative result instead of reaching for embeddings, and the retrieval path stays decoupled 
-from the migrated call.
+LLM classifier for public defense news snippets: category + operational domain via 
+structured output, graded against a human-labeled eval that now gates CI. Currently 88.9% 
+category / 94.4% domain accuracy after an eval-gated Sonnet 5 migration. Retrieval was 
+measured twice and lost twice (marginal lift on Sonnet 4.6, a 9.3-point regression on 5), 
+so I shipped the negative result instead of reaching for embeddings.
 
 **[learning-notes](https://github.com/sanlee-ys/learning-notes)** — 
-Plain-language notes on the concepts behind these projects — tool use, RAG, evals, 
-embeddings, model routing, and how I steer AI agents. Four ways to read them: a searchable 
-page, a MkDocs site, an interactive D3 concept map that links each idea to the ones it 
-builds on, and kb-agent chat that answers from the notes with citations.
+Plain-language notes on the concepts behind these projects: tool use, RAG, evals, 
+embeddings, and how I steer AI agents. Read them as a searchable page, a MkDocs site, an 
+interactive D3 concept map, or through kb-agent chat with citations.
 
 **[claude-ops](https://github.com/sanlee-ys/claude-ops)** — 
-The operating layer for the Claude-assisted workflow the rest of this page describes: a 
-credential-guard hook hardened across four documented leak incidents in one week, blameless 
-postmortems with the failures left in, a pre-commit redline guard, and the working 
-agreements that scope each session.
+The operating layer for the Claude-assisted workflow this page describes: a credential-guard 
+hook hardened across four documented leak incidents, blameless postmortems with the failures 
+left in, and the working agreements that scope each session.
 
 **[architecture](https://github.com/sanlee-ys/architecture)** — 
 System-level architecture decisions (ADRs) that span more than one project, plus the system 
-portal: a generated MkDocs site that pulls every repo's docs and a roadmap dashboard into 
-one place on GitHub Pages.
+portal that pulls every repo's docs into one place on GitHub Pages.
 
 **[notes-api](https://github.com/sanlee-ys/notes-api)** — 
 Python/FastAPI notes REST API with SQLAlchemy; async tag enrichment via BackgroundTasks seam to the defense-news-classifier.
