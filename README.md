@@ -29,6 +29,14 @@ category / 92.6% domain / 87.0% region on that set. Retrieval was
 measured twice and lost twice (marginal lift on Sonnet 4.6, a 9.3-point regression on 5), 
 so I shipped the negative result instead of reaching for embeddings.
 
+**[faithfulness-judge](https://github.com/sanlee-ys/faithfulness-judge)** — 
+Measures whether an LLM judge can be trusted to catch unsupported claims, scored against 
+191 human-labeled claims on public defense text. Both tiers land in substantial agreement 
+(Opus κ 0.742, Sonnet κ 0.696) but the confidence intervals overlap, so the cheap tier is 
+good enough and escalation buys little. A `max_tokens=10` truncation had silently corrupted 
+20% of Sonnet's verdicts and manufactured a false tier gap, caught by reading the 
+misjudgment log one commit before publishing.
+
 **[learning-notes](https://github.com/sanlee-ys/learning-notes)** — 
 Plain-language notes on the concepts behind these projects: tool use, RAG, evals, 
 embeddings, and how I steer AI agents. Read them as a searchable page, a MkDocs site, an 
