@@ -17,42 +17,41 @@ does most of the typing; the evals and postmortems are the proof.
 
 ## What I'm building
 
-**[kb-agent](https://github.com/sanlee-ys/kb-agent)** — 
-Personal, living knowledge base over your projects and their dependencies. A local 
-Claude RAG + tool-use agent you can query or point at your projects' running services, 
-and now an MCP server any MCP host can mount. Answers cite their KB sources.
-
 **[defense-news-classifier](https://github.com/sanlee-ys/defense-news-classifier)** — 
-LLM classifier for public defense news snippets: category, operational domain, and region via 
-structured output, graded against a human-labeled eval that gates CI. `v3.0.0` scores 92.6% 
-category / 92.6% domain / 87.0% region on that set. Retrieval was 
-measured twice and lost twice (marginal lift on Sonnet 4.6, a 9.3-point regression on 5), 
-so I shipped the negative result instead of reaching for embeddings.
-
-**[faithfulness-judge](https://github.com/sanlee-ys/faithfulness-judge)** — 
-Measures whether an LLM judge can be trusted to catch unsupported claims, scored against 
-191 human-labeled claims on public defense text. Both tiers land in substantial agreement 
-(Opus κ 0.742, Sonnet κ 0.696) but the confidence intervals overlap, so the cheap tier is 
-good enough and escalation buys little. A `max_tokens=10` truncation had silently corrupted 
-20% of Sonnet's verdicts and manufactured a false tier gap, caught by reading the 
-misjudgment log one commit before publishing.
-
-**[learning-notes](https://github.com/sanlee-ys/learning-notes)** — 
-Plain-language notes on the concepts behind these projects: tool use, RAG, evals, 
-embeddings, and how I steer AI agents. Read them as a searchable page, a MkDocs site, an 
-interactive D3 concept map, or through kb-agent chat with citations.
+LLM classifier for public defense news snippets: category, operational domain, and region 
+via structured tool-use output, graded against a human-labeled eval that gates CI and served 
+as a containerized FastAPI endpoint that two other repos here call. `v3.0.0` scores 92.6% 
+category / 92.6% domain / 87.0% region on a 54-snippet human answer key; a 300-snippet 
+judge-graded run corroborates category and domain at 93.3% [89.9, 95.6] and 90.3% 
+[86.5, 93.2]. Two escalations have been measured and declined: BM25 grounding was retired 
+once it stopped beating the ungrounded classifier, and tiered routing moved +0 rows on both 
+axes at ~1.97x the cost.
 
 **[claude-ops](https://github.com/sanlee-ys/claude-ops)** — 
-The operating layer for the Claude-assisted workflow this page describes: a credential-guard 
-hook hardened across four documented leak incidents, blameless postmortems with the failures 
-left in, and the working agreements that scope each session.
+The operating layer for the Claude-assisted workflow this page describes: a `PreToolUse` 
+credential-guard hook rebuilt into a path-based default-deny after four credential-exposure 
+events in one week, three of them the same token leaking through a different tool shape. 
+Six blameless postmortems keep the failures in, and a 63-test suite gates CI, 28 of them 
+pinned red-team findings from five adversarial rounds. A separate test class asserts the 
+shapes the guard deliberately does *not* block, so the control's own boundary fails the 
+build if a later fix quietly widens it.
 
-**[architecture](https://github.com/sanlee-ys/architecture)** — 
-System-level architecture decisions (ADRs) that span more than one project, plus the system 
-portal that pulls every repo's docs into one place on GitHub Pages.
+**[kb-agent](https://github.com/sanlee-ys/kb-agent)** — 
+A knowledge base over my projects and their dependencies, served from one tool 
+implementation across two transports: a Claude tool-use agent and an MCP server any host can 
+mount, sharing the same functions and the same descriptions. The cross-repo HTTP seams that 
+let it drive my running services are deliberately kept off the MCP surface, since a server 
+that quietly needs two background processes is a bad install. Retrieval is graded against a 
+hand-labeled 27-query gold set (recall@5 0.926, MRR 0.781), and the harness aborts on any 
+non-success observation rather than scoring an unindexed KB as zero recall.
 
-**[notes-api](https://github.com/sanlee-ys/notes-api)** — 
-Python/FastAPI notes REST API with SQLAlchemy; async tag enrichment via BackgroundTasks seam to the defense-news-classifier.
+Also public: **[architecture](https://github.com/sanlee-ys/architecture)** (cross-repo ADRs 
+and the system portal), **[faithfulness-judge](https://github.com/sanlee-ys/faithfulness-judge)** 
+(whether an LLM judge can be trusted against human-labeled claims), 
+**[notes-api](https://github.com/sanlee-ys/notes-api)** (FastAPI service with an async 
+enrichment seam to the classifier), and 
+**[learning-notes](https://github.com/sanlee-ys/learning-notes)** (plain-language notes on 
+the concepts behind all of it).
 
 ## Day job
 In Employee Platforms, I run product for SharePoint Online and OneDrive — the collaboration 
