@@ -23,9 +23,9 @@ Claude RAG + tool-use agent you can query or point at your projects' running ser
 and now an MCP server any MCP host can mount. Answers cite their KB sources.
 
 **[defense-news-classifier](https://github.com/sanlee-ys/defense-news-classifier)** — 
-LLM classifier for public defense news snippets: category + operational domain via 
-structured output, graded against a human-labeled eval that now gates CI. Currently 88.9% 
-category / 94.4% domain accuracy after an eval-gated Sonnet 5 migration. Retrieval was 
+LLM classifier for public defense news snippets: category, operational domain, and region via 
+structured output, graded against a human-labeled eval that gates CI. `v3.0.0` scores 92.6% 
+category / 92.6% domain / 87.0% region on that set. Retrieval was 
 measured twice and lost twice (marginal lift on Sonnet 4.6, a 9.3-point regression on 5), 
 so I shipped the negative result instead of reaching for embeddings.
 
