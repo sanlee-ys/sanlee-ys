@@ -47,12 +47,12 @@ hand-labeled 27-query gold set (recall@5 0.926, MRR 0.781), and the harness abor
 non-success observation rather than scoring an unindexed KB as zero recall.
 
 **[faithfulness-judge](https://github.com/sanlee-ys/faithfulness-judge)** — 
-Measures whether an LLM judge can be trusted to catch unsupported claims, scored against 191 
+Measures whether an LLM judge can be trusted to catch unsupported claims, scored against 189 
 human-labeled claims on public defense text. Both tiers land in substantial agreement (Opus 
-κ 0.742, Sonnet κ 0.696) with overlapping confidence intervals, so the cheap tier is good 
-enough and the escalation is not evidenced. A `max_tokens=10` truncation had silently 
-corrupted 20% of Sonnet's verdicts and manufactured a false tier gap, caught by reading the 
-misjudgment log one commit before publishing.
+κ 0.751, Sonnet κ 0.716), and neither axis separates them: the κ intervals overlap, and the 
+fabrication-recall gap is McNemar p = 0.125 on four discordant pairs. Two of the numbers 
+here are corrections I published against myself, a `max_tokens=10` truncation that had 
+manufactured a false tier gap and a recall claim that outran its own sample size.
 
 Also public: **[architecture](https://github.com/sanlee-ys/architecture)** (cross-repo ADRs 
 and the system portal), **[notes-api](https://github.com/sanlee-ys/notes-api)** (FastAPI 
