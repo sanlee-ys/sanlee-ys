@@ -19,8 +19,9 @@ does most of the typing; the evals and postmortems are the proof.
 
 **[defense-news-classifier](https://github.com/sanlee-ys/defense-news-classifier)** — 
 LLM classifier for public defense news snippets: category, operational domain, and region 
-via structured tool-use output, graded against a human-labeled eval that gates CI and served 
-as a containerized FastAPI endpoint that two other repos here call. `v3.0.0` scores 92.6% 
+via structured tool-use output, graded against a human-labeled eval whose accuracy floors 
+block every PR (the live model run is weekly, not per-PR), and served as a containerized 
+FastAPI endpoint that two other repos here call. `v3.0.0` scores 92.6% 
 category / 92.6% domain / 87.0% region on a 54-snippet human answer key; a 300-snippet 
 judge-graded run corroborates category and domain at 93.3% [89.9, 95.6] and 90.3% 
 [86.5, 93.2]. Two escalations have been measured and declined: BM25 grounding was retired 
@@ -45,11 +46,17 @@ that quietly needs two background processes is a bad install. Retrieval is grade
 hand-labeled 27-query gold set (recall@5 0.926, MRR 0.781), and the harness aborts on any 
 non-success observation rather than scoring an unindexed KB as zero recall.
 
+**[faithfulness-judge](https://github.com/sanlee-ys/faithfulness-judge)** — 
+Measures whether an LLM judge can be trusted to catch unsupported claims, scored against 191 
+human-labeled claims on public defense text. Both tiers land in substantial agreement (Opus 
+κ 0.742, Sonnet κ 0.696) with overlapping confidence intervals, so the cheap tier is good 
+enough and the escalation is not evidenced. A `max_tokens=10` truncation had silently 
+corrupted 20% of Sonnet's verdicts and manufactured a false tier gap, caught by reading the 
+misjudgment log one commit before publishing.
+
 Also public: **[architecture](https://github.com/sanlee-ys/architecture)** (cross-repo ADRs 
-and the system portal), **[faithfulness-judge](https://github.com/sanlee-ys/faithfulness-judge)** 
-(whether an LLM judge can be trusted against human-labeled claims), 
-**[notes-api](https://github.com/sanlee-ys/notes-api)** (FastAPI service with an async 
-enrichment seam to the classifier), and 
+and the system portal), **[notes-api](https://github.com/sanlee-ys/notes-api)** (FastAPI 
+service with an async enrichment seam to the classifier), and 
 **[learning-notes](https://github.com/sanlee-ys/learning-notes)** (plain-language notes on 
 the concepts behind all of it).
 
