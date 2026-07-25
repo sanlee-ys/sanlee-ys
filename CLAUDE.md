@@ -44,6 +44,33 @@ blurb).
   can't fit without losing the old headline, the repo's README is the right
   home for one of them.
 
+## No Dependabot config until this repo has a workflow (hard rule)
+
+Decided 2026-07-25, after the weekly repo sweep found this repo's `main` had
+been red every week since at least 2026-07-11.
+
+This repo once carried a `.github/dependabot.yml` with a `github-actions`
+block, commented as "forward-looking and currently inert: if a workflow is
+ever added here, Dependabot is already watching it." That is not how
+Dependabot behaves. With no `action.yml` and no `.github/workflows/*.yml`, the
+github-actions ecosystem does not sit quiet — it fails the update run:
+
+```
+dependency_file_not_found
+"/action.yml or /.github/workflows/<anything>.yml not found"
+```
+
+So the block was red by construction, once a week, forever, on a repo whose
+whole job is to be the profile page. The config was removed rather than
+repaired, because there is no version of it that is both present and green
+while the repo has nothing to scan.
+
+**Do not re-add a Dependabot config here until this repo actually contains a
+workflow or an action.** At that point add the `github-actions` block in the
+same PR as the workflow, never ahead of it. A watcher pointed at nothing is
+not caution; it is a permanent false alarm that trains you to ignore a red
+`main`.
+
 ## Voice
 
 Same bar as the portfolio (see `portfolio` repo conventions): survives a
