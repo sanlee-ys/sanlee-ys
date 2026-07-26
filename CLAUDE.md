@@ -34,10 +34,15 @@ Decided 2026-07-11 after the shipped-facts refresh made the classifier blurb
 absorb repo-README density (four decimal numbers + CI architecture in one
 blurb).
 
-- **Each project blurb: at most 3 sentences.** What it is, the headline
+- **Each project blurb: at most 60 words.** What it is, the headline
   number(s) if any, one distinctive finding. Detailed figures (per-label F1,
   macro-F1 pairs, gate architecture, mechanism) live in the repo's own README
   — the blurb links, it does not restate.
+
+  This was a 3-sentence cap until 2026-07-26. Sentence-counting does not bind:
+  every blurb stayed compliant while growing to 80–105 words, because the
+  sentences got longer instead of more numerous, which reproduced exactly the
+  repo-README density the rule was written to prevent. Count words.
 - **Intro: at most 2 paragraphs** before "What I'm building".
 - **Adding a shipped fact means compressing, not appending.** New facts
   displace old detail; the blurb's length stays at the bar. If the new fact
