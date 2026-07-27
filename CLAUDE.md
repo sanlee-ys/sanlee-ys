@@ -49,6 +49,53 @@ blurb).
   can't fit without losing the old headline, the repo's README is the right
   home for one of them.
 
+## The classifier claims carry SYS-019 markers — do not strip them (hard rule)
+
+Decided 2026-07-26, after the blurb was found still advertising `v3.0.0` a day
+after v3.1.0 shipped. The numbers happened to be unchanged, so only the label
+was stale — and nothing mechanical would have caught it.
+
+The classifier version and its three accuracies are wrapped in HTML-comment
+markers and asserted in CI **by `architecture/scripts/check_program_metrics.py`**,
+which fetches this README raw from `main` and compares each marked value against
+the classifier's `evals/metrics.json`:
+
+    <!-- version:classifier -->v3.1.0 scores <!-- metric:category_accuracy -->92.6% category
+
+Consequences for anyone editing that blurb:
+
+- **The markers are invisible in rendered Markdown.** They cost no words against
+  the length bar above, and deleting one is not a cosmetic change — it removes a
+  guarantee. The checker fails on zero markers, so a strip surfaces as a red
+  build in `architecture`, not here.
+- **Never wrap a marked value in backticks.** The checker strips code spans
+  before scanning, so `` `v3.1.0` `` matches nothing and the check silently
+  verifies nothing. That is why the version lost its backticks; leave it plain.
+- **The marker goes immediately before the value**, and the metric key must
+  exist in the artifact's `gold` object. A typo'd key fails rather than passing
+  forever.
+
+**The kb-agent and faithfulness-judge numbers are deliberately NOT marked.**
+Neither repo publishes a machine-readable artifact — kb-agent's figures live in
+its README prose, the judge's in `evals/results.md` — so there is nothing to
+assert against. They are counted against an allowance in the checker that may
+only shrink. If either repo ever publishes an artifact, mark them and drop the
+allowance.
+
+## Why this repo still has no workflow
+
+Guarding the above was evaluated as a workflow *here* and deliberately declined.
+It would have been this repo's first workflow (dragging in the Dependabot block
+below, plus a Python toolchain for one script in a six-file repo), and it would
+have been the **fifth** SYS-019 checker — which is the exact condition that ADR
+names as its own revisit trigger, where "the duplication argument flips."
+Extending the existing fourth checker to fetch this file reaches the same claims
+without any of that.
+
+The accepted tradeoff is that this is **detection, not prevention**: a bad edit
+here merges green and reddens `architecture` afterward. If that lag ever bites,
+the answer is a workflow here, not a second checker.
+
 ## No Dependabot config until this repo has a workflow (hard rule)
 
 A `github-actions` block does **not** sit inert on a repo with nothing to scan — with
