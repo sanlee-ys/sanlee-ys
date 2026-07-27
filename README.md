@@ -15,7 +15,7 @@ contracts, and the bar; it does most of the typing; the evals and postmortems ar
 **[defense-news-classifier](https://github.com/sanlee-ys/defense-news-classifier)** — 
 LLM classifier for public defense news: category, operational domain, and region via 
 structured tool-use, served as a containerized FastAPI endpoint two other repos here call. 
-`v3.0.0` scores 92.6% category / 92.6% domain / 87.0% region against a human answer key 
+`v3.1.0` scores 92.6% category / 92.6% domain / 87.0% region against a human answer key 
 whose accuracy floors block every PR. Two escalations were measured and declined, including 
 tiered routing at +0 rows for ~1.97x the cost.
 
