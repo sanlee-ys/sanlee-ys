@@ -40,7 +40,9 @@ human-labeled claims on public defense text. Both tiers land in substantial agre
 corrections I published against myself.
 
 Also public: **[architecture](https://github.com/sanlee-ys/architecture)** (cross-repo ADRs 
-and the system portal), **[notes-api](https://github.com/sanlee-ys/notes-api)** (FastAPI 
+and the system portal), **[netops-lab](https://github.com/sanlee-ys/netops-lab)** (MikroTik + 
+Raspberry Pi home lab for hands-on zero-touch provisioning on real hardware), 
+**[notes-api](https://github.com/sanlee-ys/notes-api)** (FastAPI 
 service with an async enrichment seam to the classifier), and 
 **[learning-notes](https://github.com/sanlee-ys/learning-notes)** (plain-language notes on 
 the concepts behind all of it).
