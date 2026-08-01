@@ -2,123 +2,83 @@
 
 Guidance for AI agents working in this repo (the GitHub profile README).
 
-## Content policy: shipped facts only, link the evolving story (hard rule)
+## What this page is (decided 2026-07-31, the redesign)
 
-Decided 2026-07-05, recorded system-wide in `architecture/SYS-009` (the
-"volatility rule for outward surfaces" amendment).
+An identity surface, nothing else: banner, a two-paragraph intro (who I am, how I work),
+a clickable system-map graphic pointing to [sanlee.me](https://sanlee.me), and a short
+footer. The **pinned repos** are the project showcase (their descriptions carry the
+numbers), and the **portfolio site** is the story of how the parts fit together.
 
-This README restates **only shipped, immutable facts**: released versions,
-measured eval numbers, what a repo *is* and *did*. It does **not** restate
-plans, roadmaps, or organizing framings (e.g. the autonomy ladder,
-`classifier/ADR-006`) — those move with every ADR, and every surface that
-restates one becomes a standing sweep obligation. The evolving system story
-lives at [sanlee.me](https://sanlee.me) and the architecture portal; this
-README links there ("See it as one system") and stops.
+This replaced the 2026-07 "shipped-facts blurbs" design (one measured paragraph per
+project, SYS-019 metric markers asserted by the `architecture` repo's checker). The
+blurbs kept absorbing repo-README density and the numbers needed cross-repo guarding;
+the redesign deletes the claims instead of guarding them harder.
 
-Concretely, when updating a project blurb:
+## No performance claims on this surface (hard rule)
 
-- **Add** a fact once it has shipped (a tagged release, a merged measured
-  result). Past-tense, specific, with the number if there is one.
-- **Do not add** upcoming levels, planned versions, or the current framing of
-  where the portfolio is headed, even when an ADR has accepted it. Accurate
-  restatements of a framing go stale the moment the framing evolves — that is
-  the drift this policy exists to prevent (the pre-ladder classifier blurb
-  was the motivating instance).
-- When a decision elsewhere changes what a blurb *means* (not just what is
-  true), the deciding PR's "Downstream surfaces" list should name this README;
-  if you are that session, sweep it here.
+No eval numbers, no version strings, no benchmark or coverage figures — not in prose,
+not in image text. A number here is an outward claim that goes stale silently: this repo
+has no workflow, and since 2026-07-31 (architecture PR #80) **no external checker reads
+this file either**. There is no guard to catch drift; the rule is that there is nothing
+to drift.
 
-## Length bar: this is a skim surface (hard rule)
+Where a claim belongs instead: the owning repo's README/description (it sits next to the
+measurement), or the portfolio (guarded by the portfolio's own checks).
 
-Decided 2026-07-11 after the shipped-facts refresh made the classifier blurb
-absorb repo-README density (four decimal numbers + CI architecture in one
-blurb).
+If a number ever deliberately returns to this README, the same change must re-add this
+surface to `REMOTE_SCANNED` in `architecture/scripts/check_program_metrics.py` (the
+mechanism and its tests were kept for exactly that) and update this section.
 
-- **Each project blurb: at most 60 words.** What it is, the headline
-  number(s) if any, one distinctive finding. Detailed figures (per-label F1,
-  macro-F1 pairs, gate architecture, mechanism) live in the repo's own README
-  — the blurb links, it does not restate.
+## Length bar (hard rule)
 
-  This was a 3-sentence cap until 2026-07-26. Sentence-counting does not bind:
-  every blurb stayed compliant while growing to 80–105 words, because the
-  sentences got longer instead of more numerous, which reproduced exactly the
-  repo-README density the rule was written to prevent. Count words.
-- **Intro: at most 2 paragraphs** before "What I'm building".
-- **Adding a shipped fact means compressing, not appending.** New facts
-  displace old detail; the blurb's length stays at the bar. If the new fact
-  can't fit without losing the old headline, the repo's README is the right
-  home for one of them.
+- **Intro: at most 2 paragraphs** between the banner and the system-map graphic.
+- **No per-project sections or blurbs.** The pins are the project list. If a repo needs
+  more said about it here than its pin shows, that prose belongs in the repo or on the
+  site, not on this page.
+- Footer: background line, outside-work line, links, Sango. Nothing that needs updating
+  on a release.
 
-## The classifier claims carry SYS-019 markers — do not strip them (hard rule)
+## images/ — the four SVGs
 
-Decided 2026-07-26, after the blurb was found still advertising `v3.0.0` a day
-after v3.1.0 shipped. The numbers happened to be unchanged, so only the label
-was stale — and nothing mechanical would have caught it.
+`banner-{dark,light}.svg` (1280×300): name, tagline, and a circuit trace rising through
+NET OPS → SOFTWARE → PRODUCT. `system-map-{dark,light}.svg` (1280×420): the six pinned
+repo names converging into one node that points at sanlee.me; the README wraps it in a
+link to the site (SVGs rendered through `<img>` cannot carry live links themselves).
 
-The classifier version and its three accuracies are wrapped in HTML-comment
-markers and asserted in CI **by `architecture/scripts/check_program_metrics.py`**,
-which fetches this README raw from `main` and compares each marked value against
-the classifier's `evals/metrics.json`:
-
-    <!-- version:classifier -->v3.1.0 scores <!-- metric:category_accuracy -->92.6% category
-
-Consequences for anyone editing that blurb:
-
-- **The markers are invisible in rendered Markdown.** They cost no words against
-  the length bar above, and deleting one is not a cosmetic change — it removes a
-  guarantee. The checker fails on zero markers, so a strip surfaces as a red
-  build in `architecture`, not here.
-- **Never wrap a marked value in backticks.** The checker strips code spans
-  before scanning, so `` `v3.1.0` `` matches nothing and the check silently
-  verifies nothing. That is why the version lost its backticks; leave it plain.
-- **The marker goes immediately before the value**, and the metric key must
-  exist in the artifact's `gold` object. A typo'd key fails rather than passing
-  forever.
-
-**The kb-agent and faithfulness-judge numbers are deliberately NOT marked.**
-Neither repo publishes a machine-readable artifact — kb-agent's figures live in
-its README prose, the judge's in `evals/results.md` — so there is nothing to
-assert against. They are counted against an allowance in the checker that may
-only shrink. If either repo ever publishes an artifact, mark them and drop the
-allowance.
+- Palette. Dark: bg `#0f1115`, text `#e7eaf0`, muted `#9aa3b2`, accent `#6ea8fe`,
+  lines `#232a35`/`#2a3342`. Light: bg `#ffffff`, text `#1f2328`, muted `#59636e`,
+  accent `#2563eb`, lines `#d1d9e0`.
+- Text must use system font stacks only — GitHub serves README images through a proxy
+  that blocks external fetches, so a webfont reference would silently fall back anyway.
+- **If the pinned set changes, the system-map labels must change in the same sitting.**
+  Nothing checks this; it is the one piece of repo state this page still mirrors.
+- Repo names in the graphic are labels, not claims — adding one is fine under the
+  no-claims rule.
 
 ## Why this repo still has no workflow
 
-Guarding the above was evaluated as a workflow *here* and deliberately declined.
-It would have been this repo's first workflow (dragging in the Dependabot block
-below, plus a Python toolchain for one script in a six-file repo), and it would
-have been the **fifth** SYS-019 checker — which is the exact condition that ADR
-names as its own revisit trigger, where "the duplication argument flips."
-Extending the existing fourth checker to fetch this file reaches the same claims
-without any of that.
-
-The accepted tradeoff is that this is **detection, not prevention**: a bad edit
-here merges green and reddens `architecture` afterward. If that lag ever bites,
-the answer is a workflow here, not a second checker.
+Previously: the metric markers were checked remotely rather than by a first workflow
+here. Now there are no metrics at all, so there is nothing to check — the no-workflow
+stance stands with less machinery behind it. If this repo ever does grow a workflow,
+the Dependabot rule below still applies.
 
 ## No Dependabot config until this repo has a workflow (hard rule)
 
 A `github-actions` block does **not** sit inert on a repo with nothing to scan — with
 no `action.yml` and no `.github/workflows/*.yml` it fails the update run every week
-with `dependency_file_not_found` ("/action.yml or /.github/workflows/<anything>.yml
-not found"). That is why the old config was removed rather than repaired: no version
-of it is both present and green here.
-
-So the block goes in **the same PR as the first workflow**, never ahead of it. A
-watcher pointed at nothing isn't caution, it's a standing false alarm that teaches you
-to ignore a red `main` — which is what it did, weekly, from at least 2026-07-11 until
-[#29](https://github.com/sanlee-ys/sanlee-ys/pull/29) removed it on 2026-07-25.
+with `dependency_file_not_found`. The block goes in **the same PR as the first
+workflow**, never ahead of it. A watcher pointed at nothing isn't caution, it's a
+standing false alarm that teaches you to ignore a red `main` — which is what it did,
+weekly, until [#29](https://github.com/sanlee-ys/sanlee-ys/pull/29) removed it on
+2026-07-25.
 
 ## Voice
 
-Same bar as the portfolio (see `portfolio` repo conventions): survives a
-skeptical senior engineer, owns the solo scale and the AI assist, right-sized
-claims, no hype. Negative results are stated as such ("the lift was marginal,
-so I shipped the negative result").
+Same bar as the portfolio (see `portfolio` repo conventions): survives a skeptical
+senior engineer, owns the solo scale and the AI assist, right-sized claims, no hype.
 
-The AI assist is stated as **method, not confession** (decided 2026-07-11;
-canonical framing = the portfolio colophon): San sets the direction, the
-contracts, and the bar; Claude does most of the typing; the evals and
-postmortems are the proof. No apologetic framing ("full disclosure",
-"disclaimer") and no self-labels ("agentic orchestration") — describe the
-practice, name Claude plainly.
+The AI assist is stated as **method, not confession** (decided 2026-07-11; canonical
+framing = the portfolio colophon): San sets the direction, the contracts, and the bar;
+Claude does most of the typing; the evals and postmortems are the proof. No apologetic
+framing ("full disclosure", "disclaimer") and no self-labels ("agentic orchestration")
+— describe the practice, name Claude plainly.

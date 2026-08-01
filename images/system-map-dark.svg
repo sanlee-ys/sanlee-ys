@@ -1,0 +1,58 @@
+<svg viewBox="0 0 1280 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mapTitle mapDesc">
+  <title id="mapTitle">See it as one system → sanlee.me</title>
+  <desc id="mapDesc">Six repository names — defense-news-classifier, claude-ops, kb-agent, faithfulness-judge, architecture, learning-notes — connect by traces into a single node, which points to sanlee.me under the heading "See it as one system."</desc>
+  <defs>
+    <radialGradient id="mblob" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6ea8fe" stop-opacity="0.10"/>
+      <stop offset="70%" stop-color="#6ea8fe" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="mframe">
+      <rect x="0" y="0" width="1280" height="420" rx="14"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#mframe)">
+    <rect x="0" y="0" width="1280" height="420" fill="#0f1115"/>
+    <ellipse cx="1040" cy="80" rx="360" ry="360" fill="url(#mblob)"/>
+    <ellipse cx="240" cy="360" rx="320" ry="320" fill="url(#mblob)"/>
+  </g>
+  <!-- converging traces -->
+  <g fill="none" stroke="#2a3342" stroke-width="2">
+    <path d="M 410 84  C 520 84  560 210 655 210"/>
+    <path d="M 410 138 C 515 138 555 210 655 210"/>
+    <path d="M 410 192 C 510 192 550 210 655 210"/>
+    <path d="M 410 246 C 510 246 550 212 655 211"/>
+    <path d="M 410 300 C 515 300 555 214 655 212"/>
+    <path d="M 410 354 C 520 354 560 216 655 213"/>
+  </g>
+  <!-- repo labels -->
+  <g font-family="'Cascadia Code','SF Mono','JetBrains Mono',Consolas,'Liberation Mono',monospace" font-size="17" fill="#9aa3b2" text-anchor="end">
+    <text x="392" y="90">defense-news-classifier</text>
+    <text x="392" y="144">claude-ops</text>
+    <text x="392" y="198">kb-agent</text>
+    <text x="392" y="252">faithfulness-judge</text>
+    <text x="392" y="306">architecture</text>
+    <text x="392" y="360">learning-notes</text>
+  </g>
+  <g fill="#6ea8fe">
+    <circle cx="410" cy="84" r="3.5"/>
+    <circle cx="410" cy="138" r="3.5"/>
+    <circle cx="410" cy="192" r="3.5"/>
+    <circle cx="410" cy="246" r="3.5"/>
+    <circle cx="410" cy="300" r="3.5"/>
+    <circle cx="410" cy="354" r="3.5"/>
+  </g>
+  <!-- junction -->
+  <circle cx="662" cy="211" r="9" fill="none" stroke="#6ea8fe" stroke-width="2.5"/>
+  <circle cx="662" cy="211" r="3" fill="#6ea8fe"/>
+  <path d="M 673 211 H 712" fill="none" stroke="#6ea8fe" stroke-width="2.5"/>
+  <polygon points="712,204.5 724,211 712,217.5" fill="#6ea8fe"/>
+  <!-- text block -->
+  <g font-family="'Geist','Inter','Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif">
+    <text x="740" y="140" font-size="13" font-weight="500" letter-spacing="2.6" fill="#9aa3b2">THE REPOS ARE THE PARTS</text>
+    <text x="738" y="196" font-size="46" font-weight="600" letter-spacing="-0.9" fill="#e7eaf0">See it as one system</text>
+    <text x="740" y="232" font-size="18" fill="#9aa3b2">the decisions behind each call, and how it all fits together</text>
+    <rect x="740" y="262" width="238" height="56" rx="28" fill="#6ea8fe"/>
+    <text x="859" y="298" font-size="22" font-weight="600" text-anchor="middle" fill="#0f1115">sanlee.me &#8594;</text>
+  </g>
+  <rect x="1" y="1" width="1278" height="418" rx="13" fill="none" stroke="#232a35" stroke-width="1.5"/>
+</svg>
