@@ -1,18 +1,14 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/banner-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/banner-light.svg">
-  <img alt="San Lee · From the wires up: network operations to software engineering to product" src="images/banner-dark.svg">
-</picture>
+# San Lee
+
+**From the wires up: network operations to software engineering to product.**
 
 I'm a Senior Product Associate at JPMorganChase in Employee Platforms, where I run product
 for SharePoint Online and OneDrive, the collaboration platforms every line of business in
-the firm works in. I got here from the wires up: network operations first, then software
-engineering, now product.
-
-On the side I build AI systems in the open by directing Claude: I set the direction, the
-contracts, and the bar; it does most of the typing; the evals and postmortems are the proof.
-The pinned repos below are the parts, and every number lives where it's measured. How the
-parts fit together, and the decisions behind each call, is the site:
+the firm works in. On the side I build AI systems in the open by directing Claude: I set
+the direction, the contracts, and the bar; it does most of the typing; the evals and
+postmortems are the proof. The pinned repos below are the parts, and every number lives
+where it's measured. How the parts fit together, and the decisions behind each call, is
+the site:
 
 <a href="https://sanlee.me">
   <picture>
