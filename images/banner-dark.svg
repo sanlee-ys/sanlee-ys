@@ -1,26 +1,36 @@
-<svg viewBox="0 0 1280 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bannerTitle bannerDesc">
-  <title id="bannerTitle">San Lee · Systems &amp; Product</title>
-  <desc id="bannerDesc">Masthead for San Lee's GitHub profile. Headline "San Lee" over the tagline "From the wires up: network operations to software engineering to product." Proof legend: eval-driven development, contract-first integration, AI product judgment, scope discipline, RAG / tool-use.</desc>
+<svg viewBox="0 0 1280 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bannerTitle bannerDesc">
+  <title id="bannerTitle">San Lee · From the wires up</title>
+  <desc id="bannerDesc">Masthead for San Lee's GitHub profile. Headline "San Lee" over the tagline "From the wires up: network operations to software engineering to product." A circuit trace rises across the right side through three nodes labeled net ops, software, and product.</desc>
   <defs>
     <radialGradient id="blob" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#6ea8fe" stop-opacity="0.12"/>
       <stop offset="70%" stop-color="#6ea8fe" stop-opacity="0"/>
     </radialGradient>
     <clipPath id="frame">
-      <rect x="0" y="0" width="1280" height="360" rx="14"/>
+      <rect x="0" y="0" width="1280" height="300" rx="14"/>
     </clipPath>
   </defs>
   <g clip-path="url(#frame)">
-    <rect x="0" y="0" width="1280" height="360" fill="#0f1115"/>
-    <ellipse cx="230" cy="101" rx="360" ry="360" fill="url(#blob)"/>
-    <ellipse cx="1050" cy="79" rx="340" ry="340" fill="url(#blob)"/>
-    <ellipse cx="768" cy="295" rx="300" ry="300" fill="url(#blob)"/>
+    <rect x="0" y="0" width="1280" height="300" fill="#0f1115"/>
+    <ellipse cx="220" cy="90" rx="340" ry="340" fill="url(#blob)"/>
+    <ellipse cx="1070" cy="240" rx="320" ry="320" fill="url(#blob)"/>
+  </g>
+  <!-- circuit trace: the arc, drawn -->
+  <g clip-path="url(#frame)">
+    <path d="M 790 150 H 908 L 948 110 H 1030 L 1070 70 H 1178" fill="none" stroke="#2a3342" stroke-width="2.5"/>
+    <rect x="783" y="143" width="14" height="14" rx="2" fill="none" stroke="#6ea8fe" stroke-width="2.5"/>
+    <circle cx="990" cy="110" r="6.5" fill="none" stroke="#6ea8fe" stroke-width="2.5"/>
+    <rect x="1170" y="62" width="15" height="15" rx="2" transform="rotate(45 1177.5 69.5)" fill="#6ea8fe"/>
+    <g font-family="'Geist','Inter','Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="500" letter-spacing="2.2" fill="#9aa3b2">
+      <text x="790" y="182" text-anchor="middle">NET&#160;OPS</text>
+      <text x="990" y="142" text-anchor="middle">SOFTWARE</text>
+      <text x="1178" y="102" text-anchor="middle">PRODUCT</text>
+    </g>
   </g>
   <g font-family="'Geist','Inter','Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif" text-anchor="start">
-    <text x="80" y="158" font-size="92" font-weight="600" letter-spacing="-1.8" fill="#e7eaf0">San Lee</text>
-    <rect x="82" y="184" width="56" height="2" fill="#6ea8fe"/>
-    <text x="80" y="236" font-size="26" font-weight="400" letter-spacing="-0.26" fill="#e7eaf0">From the wires up: network operations to software engineering to product.</text>
-    <text x="80" y="298" font-size="15" font-weight="400" letter-spacing="0.15" fill="#9aa3b2">eval-driven development<tspan fill="#6ea8fe"> · </tspan>contract-first integration<tspan fill="#6ea8fe"> · </tspan>AI product judgment<tspan fill="#6ea8fe"> · </tspan>scope discipline<tspan fill="#6ea8fe"> · </tspan>RAG / tool-use</text>
+    <text x="80" y="150" font-size="88" font-weight="600" letter-spacing="-1.8" fill="#e7eaf0">San Lee</text>
+    <rect x="82" y="176" width="56" height="2" fill="#6ea8fe"/>
+    <text x="80" y="226" font-size="25" font-weight="400" letter-spacing="-0.25" fill="#e7eaf0">From the wires up: network operations to software engineering to product.</text>
   </g>
-  <rect x="1" y="1" width="1278" height="358" rx="13" fill="none" stroke="#232a35" stroke-width="1.5"/>
+  <rect x="1" y="1" width="1278" height="298" rx="13" fill="none" stroke="#232a35" stroke-width="1.5"/>
 </svg>
