@@ -10,9 +10,9 @@ the site:
 
 <a href="https://sanlee.me">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/system-map-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/system-map-light.svg">
-    <img alt="See it as one system: the six pinned repos converge into one node that points to sanlee.me" src="images/system-map-dark.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="images/one-system-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/one-system-light.svg">
+    <img alt="See it as one system: the six pinned repos converge into one node that points to sanlee.me" src="images/one-system-dark.svg">
   </picture>
 </a>
 
