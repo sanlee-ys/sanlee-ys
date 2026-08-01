@@ -1,8 +1,6 @@
 # San Lee
 
-**From the wires up: network operations to software engineering to product.**
-
-I'm a Senior Product Associate at JPMorganChase in Employee Platforms, where I run product
+I'm a Senior Product Associate at JPMorganChase in Employee Platforms, working on product
 for SharePoint Online and OneDrive, the collaboration platforms every line of business in
 the firm works in. On the side I build AI systems in the open by directing Claude: I set
 the direction, the contracts, and the bar; it does most of the typing; the evals and

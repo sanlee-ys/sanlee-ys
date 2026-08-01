@@ -4,8 +4,8 @@ Guidance for AI agents working in this repo (the GitHub profile README).
 
 ## What this page is (decided 2026-07-31, the redesign; tightened 2026-08-01)
 
-An identity surface, nothing else: a **text header** (name, tagline, one intro
-paragraph), then **one** clickable system-map graphic pointing to
+An identity surface, nothing else: a **text header** (name plus one intro paragraph),
+then **one** clickable system-map graphic pointing to
 [sanlee.me](https://sanlee.me) that takes the bulk of the body, then a short footer.
 The **pinned repos** are the project showcase (their descriptions carry the numbers),
 and the **portfolio site** is the story of how the parts fit together.
@@ -81,6 +81,15 @@ workflow**, never ahead of it. A watcher pointed at nothing isn't caution, it's 
 standing false alarm that teaches you to ignore a red `main` — which is what it did,
 weekly, until [#29](https://github.com/sanlee-ys/sanlee-ys/pull/29) removed it on
 2026-07-25.
+
+## Copy rulings (San, 2026-08-01 — do not regress)
+
+- **The "From the wires up: …" tagline does not appear in prose here.** It lives on the
+  portfolio; restating it on this page too read as plastering. The NET OPS → SOFTWARE →
+  PRODUCT trace in the graphic's corner is the one permitted echo.
+- **He does not "run" product for SharePoint Online / OneDrive** — that is his lead's
+  job; he works on it and covers. "Working on product for…" is the ceiling for this
+  claim, here and anywhere else this page's copy gets reused.
 
 ## Voice
 
