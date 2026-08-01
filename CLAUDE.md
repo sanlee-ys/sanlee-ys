@@ -2,12 +2,18 @@
 
 Guidance for AI agents working in this repo (the GitHub profile README).
 
-## What this page is (decided 2026-07-31, the redesign)
+## What this page is (decided 2026-07-31, the redesign; tightened 2026-08-01)
 
-An identity surface, nothing else: banner, a two-paragraph intro (who I am, how I work),
-a clickable system-map graphic pointing to [sanlee.me](https://sanlee.me), and a short
-footer. The **pinned repos** are the project showcase (their descriptions carry the
-numbers), and the **portfolio site** is the story of how the parts fit together.
+An identity surface, nothing else: a **text header** (name, tagline, one intro
+paragraph), then **one** clickable system-map graphic pointing to
+[sanlee.me](https://sanlee.me) that takes the bulk of the body, then a short footer.
+The **pinned repos** are the project showcase (their descriptions carry the numbers),
+and the **portfolio site** is the story of how the parts fit together.
+
+One graphic is a San ruling (2026-08-01), not a suggestion: the first redesign shipped a
+banner SVG plus the map, and he cut the banner the same day. The header is markdown text;
+the banner's circuit-trace arc moved into the map's top-right corner. Don't reintroduce a
+second image.
 
 This replaced the 2026-07 "shipped-facts blurbs" design (one measured paragraph per
 project, SYS-019 metric markers asserted by the `architecture` repo's checker). The
@@ -31,19 +37,23 @@ mechanism and its tests were kept for exactly that) and update this section.
 
 ## Length bar (hard rule)
 
-- **Intro: at most 2 paragraphs** between the banner and the system-map graphic.
+- **Intro: at most 2 paragraphs** between the header and the system-map graphic
+  (currently one; the graphic should arrive fast).
 - **No per-project sections or blurbs.** The pins are the project list. If a repo needs
   more said about it here than its pin shows, that prose belongs in the repo or on the
   site, not on this page.
 - Footer: background line, outside-work line, links, Sango. Nothing that needs updating
   on a release.
 
-## images/ — the four SVGs
+## images/ — the two SVGs
 
-`banner-{dark,light}.svg` (1280×300): name, tagline, and a circuit trace rising through
-NET OPS → SOFTWARE → PRODUCT. `system-map-{dark,light}.svg` (1280×420): the six pinned
-repo names converging into one node that points at sanlee.me; the README wraps it in a
-link to the site (SVGs rendered through `<img>` cannot carry live links themselves).
+`system-map-{dark,light}.svg` (1280×660), the page's only graphic: heading ("See it as
+one system"), the six pinned repo names converging from both sides into one node with a
+stem down to a sanlee.me button, and the NET OPS → SOFTWARE → PRODUCT circuit trace as a
+small signature in the top-right corner (inherited from the retired banner). The README
+wraps it in a link to the site (SVGs rendered through `<img>` cannot carry live links
+themselves). `banner-{dark,light}.svg` were deleted 2026-08-01; if a file by that name
+reappears, someone is violating the one-graphic ruling above.
 
 - Palette. Dark: bg `#0f1115`, text `#e7eaf0`, muted `#9aa3b2`, accent `#6ea8fe`,
   lines `#232a35`/`#2a3342`. Light: bg `#ffffff`, text `#1f2328`, muted `#59636e`,
