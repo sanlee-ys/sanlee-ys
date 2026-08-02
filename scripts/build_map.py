@@ -63,7 +63,7 @@ LIGHT = dict(
 
 # The six pinned repos: (label, chip x, chip width, row center y).
 # Left column chips end at x=508; right column chips start at x=772.
-LEFT = [("defense-news-classifier", 251, 257, 310), ("claude-ops", 376, 132, 390), ("kb-agent", 395, 113, 470)]
+LEFT = [("defense-news-classifier", 251, 257, 310), ("agent-ops", 386, 122, 390), ("kb-agent", 395, 113, 470)]
 RIGHT = [("faithfulness-judge", 772, 209, 310), ("architecture", 772, 151, 390), ("learning-notes", 772, 170, 470)]
 
 # Beam geometry, chip edge -> junction (640,390). Streak overlays reuse these.
@@ -94,7 +94,7 @@ def beams(p):
 def svg(p):
     return f'''<svg viewBox="0 0 1280 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mapTitle mapDesc">
   <title id="mapTitle">See it as one system - sanlee.me</title>
-  <desc id="mapDesc">Six repository chips - defense-news-classifier, claude-ops, kb-agent on the left; faithfulness-judge, architecture, learning-notes on the right - connect by beams into a single pulsing node, which points down to a sanlee.me button under the heading "See it as one system." A small circuit trace rises through net ops, software, and product in the top right corner.</desc>
+  <desc id="mapDesc">Six repository chips - defense-news-classifier, agent-ops, kb-agent on the left; faithfulness-judge, architecture, learning-notes on the right - connect by beams into a single pulsing node, which points down to a sanlee.me button under the heading "See it as one system." A small circuit trace rises through net ops, software, and product in the top right corner.</desc>
   <defs>
     <style>
       @font-face {{ font-family: 'Geist'; font-style: normal; font-weight: 100 900; src: url(data:font/woff2;base64,{b64["GEIST"]}) format('woff2'); }}
