@@ -3,9 +3,10 @@
 I'm a Senior Product Associate at JPMorganChase in Employee Platforms, working on product
 for SharePoint Online and OneDrive, the collaboration platforms every line of business in
 the firm works in. On the side I build AI systems in the open, run the way a technical
-program manager runs a program, with Claude as the build capacity: I set the direction,
-the contracts, and the bar; it does most of the typing; the evals and postmortems are the
-proof. The pinned repos below are the parts, and every number lives where it's measured.
+program manager runs a program, with an AI agent fleet across four model vendors—Claude Code
+leading implementation, Codex for independent review, Cursor in the IDE, and Antigravity for
+research: I set the direction, the contracts, and the bar; they do the typing; the evals and
+postmortems are the proof. The pinned repos below are the parts, and every number lives where it's measured.
 How the parts fit together, and the decisions behind each call, is the site:
 
 <a href="https://sanlee.me">
