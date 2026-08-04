@@ -6,7 +6,7 @@ the firm works in. On the side I build AI systems in the open, run the way a tec
 program manager runs a program, with an AI agent fleet across four model vendors—Claude Code
 leading implementation, Codex for independent review, Cursor in the IDE, and Antigravity for
 research: I set the direction, the contracts, and the bar; they do the typing; the evals and
-postmortems are the proof. Every metric lives where it's measured, and how the parts fit together into one system is on the portfolio:
+postmortems are the proof. Every metric lives where it's measured—from coding-agent telemetry ([telltale](https://github.com/sanlee-ys/telltale)) and multi-vendor operational security ([agent-ops](https://github.com/sanlee-ys/agent-ops)) to RAG + evals ([kb-agent](https://github.com/sanlee-ys/kb-agent), [defense-news-classifier](https://github.com/sanlee-ys/defense-news-classifier), [faithfulness-judge](https://github.com/sanlee-ys/faithfulness-judge))—and how the parts fit together into one system is on the portfolio:
 
 <a href="https://sanlee.me">
   <picture>
