@@ -17,8 +17,13 @@ content image (Sango in the footer is the exception that already shipped).
 
 **2026-08-09 redesign:** palette moved from Vercel blue/purple to the portfolio's paper /
 ink / oxide tokens so the profile and sanlee.me share one face; corners squared to match
-the portfolio plate language. Filenames versioned (`one-system-v5-*.svg`) so GitHub camo
-cannot serve a stale map after a redesign.
+the portfolio plate language. Filenames versioned so GitHub camo cannot serve a stale map
+after a redesign.
+
+**2026-08-10 redesign (v6):** instrument-hub layout — elbowed collector spokes into a
+dashed-orbit reticle, dual-cadence packet streams, sequential chip LEDs, dot field instead
+of hairline grid. Motion is still CSS `@keyframes` only (what GitHub's profile `<img>`
+runs). Stem `one-system-v6-*.svg`.
 
 **Chip set = portfolio system, not profile pins.** The six chips are the public parts of
 the system told on sanlee.me (classifier, faithfulness-judge, agent-ops, architecture,
@@ -57,14 +62,16 @@ mechanism and its tests were kept for exactly that) and update this section.
 
 ## images/ — the two SVGs (GENERATED — edit the build script, not the SVGs)
 
-`one-system-v5-{dark,light}.svg` (1280×680), the page's only content graphic: badge
+`one-system-v6-{dark,light}.svg` (1280×680), the page's only content graphic: badge
 kicker, two-tone "See it as one system" headline, the six **system** repos as bordered
-mono chips converging by beams into one node, a stem down to a sanlee.me plate, and the
-NET OPS → SOFTWARE → PRODUCT circuit trace as a small signature in the top-right
-corner. Motion is **CSS `@keyframes`** (packet streaks, junction pulse, kicker-dot
-blink) — that is what runs when GitHub embeds the SVG as `<img>` on the profile. SMIL
-does not drive the profile surface. Do not put angle-bracket tags inside the SVG's
-style comment block (XML parse error). Animated layers hide under
+mono chips with sequential oxide LEDs, elbowed collector spokes into an instrument
+reticle (dual dashed orbits + crosshair ticks + staggered pulse rings), a stem down to a
+sanlee.me plate, and the NET OPS → SOFTWARE → PRODUCT circuit trace as a small signature
+in the top-right corner. Background is a sparse dot field (not a line grid). Motion is
+**CSS `@keyframes`** (dual-cadence packets, orbit dash chase, hub pulse/breathe, LED
+sequence, glow breathe) — that is what runs when GitHub embeds the SVG as `<img>` on the
+profile. SMIL does not drive the profile surface. Do not put angle-bracket tags inside
+the SVG's style comment block (XML parse error). Animated layers hide under
 `prefers-reduced-motion`. The README wraps the image in a link to the site (SVGs
 rendered through `<img>` cannot carry live links themselves).
 
