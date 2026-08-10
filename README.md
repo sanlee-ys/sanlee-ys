@@ -1,18 +1,18 @@
 # San Lee
 
-I'm a Senior Product Associate at JPMorganChase in Employee Platforms, working on product
-for SharePoint Online and OneDrive, the collaboration platforms every line of business in
-the firm works in. On the side I build AI systems in the open, run the way a technical
-program manager runs a program, with an AI agent fleet across four model vendors—Claude Code
-leading implementation, Codex for independent review, Cursor in the IDE, and Antigravity for
-research: I set the direction, the contracts, and the bar; they do the typing; the evals and
-postmortems are the proof. Every metric lives where it's measured—from coding-agent telemetry ([telltale](https://github.com/sanlee-ys/telltale)) and multi-vendor operational security ([agent-ops](https://github.com/sanlee-ys/agent-ops)) to RAG + evals ([kb-agent](https://github.com/sanlee-ys/kb-agent), [defense-news-classifier](https://github.com/sanlee-ys/defense-news-classifier), [faithfulness-judge](https://github.com/sanlee-ys/faithfulness-judge))—and how the parts fit together into one system is on the portfolio:
+Senior Product Associate at JPMorganChase in Employee Platforms — working on product
+for SharePoint Online and OneDrive, the collaboration surface every line of business
+in the firm uses. On the side I build AI systems in the open, run the way a technical
+program manager runs a program: I set the direction, the contracts, and the bar;
+Claude does most of the typing across a four-vendor agent fleet; the evals and
+postmortems are the proof. The pinned repos are the parts. How they fit together is
+on the portfolio:
 
 <a href="https://sanlee.me">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="images/one-system-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="images/one-system-light.svg">
-    <img alt="See it as one system: the six pinned repos converge into one node that points to sanlee.me" src="images/one-system-dark.svg">
+    <img alt="See it as one system: the pinned repos converge into one node that points to sanlee.me" src="images/one-system-dark.svg">
   </picture>
 </a>
 
