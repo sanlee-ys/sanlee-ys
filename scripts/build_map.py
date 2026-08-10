@@ -34,7 +34,7 @@ from pathlib import Path
 OUT = Path(__file__).resolve().parent.parent / "images"
 # Filename stem is versioned so GitHub's camo cache cannot serve a stale SVG
 # after a redesign (relative-path camo URLs key on the path).
-STEM = "one-system-v3"
+STEM = "one-system-v4"
 FONTS = {
     "GEIST": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2",
     "MONO": "https://fonts.gstatic.com/s/geistmono/v6/or3yQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeE9KK5U5Ck.woff2",
@@ -213,9 +213,9 @@ def svg(p: dict) -> str:
     <style>
       @font-face {{ font-family: 'Geist'; font-style: normal; font-weight: 100 900; src: url(data:font/woff2;base64,{b64["GEIST"]}) format('woff2'); }}
       @font-face {{ font-family: 'Geist Mono'; font-style: normal; font-weight: 400; src: url(data:font/woff2;base64,{b64["MONO"]}) format('woff2'); }}
-      /* Motion is SMIL <animate> on the elements (not CSS @keyframes).
-         raw.githubusercontent.com ships CSP `sandbox`, which freezes CSS
-         animations in the top-level SVG document; SMIL still runs. */
+      /* Motion is SMIL animate elements (not CSS keyframes). raw.github
+         CSP sandbox freezes CSS animations; SMIL still runs.
+         Do not put angle-bracket tags in this comment — SVG is XML. */
       .flow, .flowv {{ opacity: 0.95; }}
       @media (prefers-reduced-motion: reduce) {{
         .flow, .flowv, .pulse {{ opacity: 0 !important; }}

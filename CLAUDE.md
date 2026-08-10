@@ -17,7 +17,7 @@ content image (Sango in the footer is the exception that already shipped).
 
 **2026-08-09 redesign:** palette moved from Vercel blue/purple to the portfolio's paper /
 ink / oxide tokens so the profile and sanlee.me share one face; corners squared to match
-the portfolio plate language. Filenames versioned (`one-system-v3-*.svg`) so GitHub camo
+the portfolio plate language. Filenames versioned (`one-system-v4-*.svg`) so GitHub camo
 cannot serve a stale map after a redesign.
 
 **Chip set = portfolio system, not profile pins.** The six chips are the public parts of
@@ -57,13 +57,14 @@ mechanism and its tests were kept for exactly that) and update this section.
 
 ## images/ — the two SVGs (GENERATED — edit the build script, not the SVGs)
 
-`one-system-v3-{dark,light}.svg` (1280×680), the page's only content graphic: badge
+`one-system-v4-{dark,light}.svg` (1280×680), the page's only content graphic: badge
 kicker, two-tone "See it as one system" headline, the six **system** repos as bordered
 mono chips converging by beams into one node, a stem down to a sanlee.me plate, and the
 NET OPS → SOFTWARE → PRODUCT circuit trace as a small signature in the top-right
-corner. Motion is **SMIL** `<animate>` (packet streaks, junction pulse, kicker-dot
-blink) — not CSS `@keyframes` — because raw.githubusercontent.com's CSP `sandbox`
-freezes CSS animations when the SVG is opened as a document; SMIL still runs. Animated
+corner. Motion is SMIL animate elements (packet streaks, junction pulse, kicker-dot
+blink) — not CSS keyframes — because raw.githubusercontent.com's CSP sandbox freezes
+CSS animations when the SVG is opened as a document; SMIL still runs. Do not put
+angle-bracket tags inside the SVG's style comment block (XML parse error). Animated
 layers hide under `prefers-reduced-motion`. The README wraps the image in a link to the
 site (SVGs rendered through `<img>` cannot carry live links themselves).
 
