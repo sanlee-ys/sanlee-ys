@@ -16,8 +16,14 @@ the career arc lives as a small corner signature on the map. Don't reintroduce a
 content image (Sango in the footer is the exception that already shipped).
 
 **2026-08-09 redesign:** palette moved from Vercel blue/purple to the portfolio's paper /
-ink / oxide tokens so the profile and sanlee.me share one face; chip set updated to the
-live four pins; corners squared to match the portfolio plate language.
+ink / oxide tokens so the profile and sanlee.me share one face; corners squared to match
+the portfolio plate language. Filenames versioned (`one-system-v2-*.svg`) so GitHub camo
+cannot serve a stale map after a redesign.
+
+**Chip set = portfolio system, not profile pins.** The six chips are the public parts of
+the system told on sanlee.me (classifier, faithfulness-judge, agent-ops, architecture,
+kb-agent, learning-notes). GitHub profile *pins* are a separate showcase choice and may
+diverge; do not retarget this map to whatever is currently pinned.
 
 This replaced the 2026-07 "shipped-facts blurbs" design (one measured paragraph per
 project, SYS-019 metric markers asserted by the `architecture` repo's checker). The
@@ -51,9 +57,9 @@ mechanism and its tests were kept for exactly that) and update this section.
 
 ## images/ — the two SVGs (GENERATED — edit the build script, not the SVGs)
 
-`one-system-{dark,light}.svg` (1280×680), the page's only content graphic: badge kicker,
-two-tone "See it as one system" headline, the pinned repos as bordered mono chips
-converging by beams into one node, a stem down to a sanlee.me plate, and the
+`one-system-v2-{dark,light}.svg` (1280×680), the page's only content graphic: badge
+kicker, two-tone "See it as one system" headline, the six **system** repos as bordered
+mono chips converging by beams into one node, a stem down to a sanlee.me plate, and the
 NET OPS → SOFTWARE → PRODUCT circuit trace as a small signature in the top-right
 corner. Subtle CSS motion (packet streaks, junction pulse, kicker-dot blink) runs even
 inside GitHub's proxied `<img>` and is fully disabled under `prefers-reduced-motion`.
@@ -69,14 +75,18 @@ carry live links themselves).
 - Palette lives in the script's `DARK`/`LIGHT` dicts and follows the **portfolio** tokens
   (paper `#fafaf9`, ink `#1e1c1b`, oxide `#5e1f0d` / dark oxide `#c45a3a`) — not the
   retired Vercel blue/purple.
-- **If the pinned set changes, the chip labels must change in the same sitting** (edit
-  `PINS` in the script; chip widths are computed per label). Nothing checks this; it is
-  the one piece of repo state this page still mirrors.
+- **Chip set = `SYSTEM_REPOS` in the script** — the portfolio system six, not the
+  GitHub pin list. If that system set changes on sanlee.me, update the script in the
+  same sitting. Chip widths are computed per label.
+- **Cache bust:** bump the `STEM` filename version when the graphic changes in a way
+  readers must see immediately; GitHub camo keys on path and will keep serving a stale
+  SVG for a long time if the path is unchanged.
 - Repo names in the graphic are labels, not claims — adding one is fine under the
   no-claims rule.
-- Earlier files (`banner-*.svg`, `system-map-*.svg`) were deleted 2026-08-01; if a
-  second content image file appears next to these, someone is violating the one-graphic
-  ruling above.
+- Older stems (`one-system-{dark,light}.svg`, `banner-*.svg`, `system-map-*.svg`) may
+  linger in `images/` only as dead files; delete them rather than linking them. If a
+  second *content* graphic is linked from the README, someone is violating the
+  one-graphic ruling above.
 
 ## Why this repo still has no workflow
 

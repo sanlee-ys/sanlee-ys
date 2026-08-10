@@ -5,14 +5,14 @@ for SharePoint Online and OneDrive, the collaboration surface every line of busi
 in the firm uses. On the side I build AI systems in the open, run the way a technical
 program manager runs a program: I set the direction, the contracts, and the bar;
 Claude does most of the typing across a four-vendor agent fleet; the evals and
-postmortems are the proof. The pinned repos are the parts. How they fit together is
+postmortems are the proof. The public repos are the parts. How they fit together is
 on the portfolio:
 
 <a href="https://sanlee.me">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/one-system-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/one-system-light.svg">
-    <img alt="See it as one system: the pinned repos converge into one node that points to sanlee.me" src="images/one-system-dark.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="images/one-system-v2-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/one-system-v2-light.svg">
+    <img alt="See it as one system: the six system repos converge into one node that points to sanlee.me" src="images/one-system-v2-dark.svg">
   </picture>
 </a>
 

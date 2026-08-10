@@ -16,8 +16,10 @@ the kicker dot blinks. Fully off under ``prefers-reduced-motion: reduce``.
 Palette follows the portfolio site (paper ground, ink, oxide) rather than the
 old Vercel blue/purple — so the profile graphic and sanlee.me share one face.
 
-If the pinned repo set changes, update PINS below in the same sitting. Repo
-names are labels, not claims — see CLAUDE.md's no-performance-claims rule.
+The chip set is the **portfolio system** (six public parts that converge on
+sanlee.me) — NOT the GitHub profile pins. Pins can change for showcase reasons;
+this map tracks the system story. If the portfolio's system set changes, update
+SYSTEM_REPOS below. Repo names are labels, not claims — see CLAUDE.md.
 """
 from __future__ import annotations
 
@@ -26,28 +28,34 @@ import urllib.request
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "images"
+# Filename stem is versioned so GitHub's camo cache cannot serve a stale SVG
+# after a redesign (relative-path camo URLs key on the path).
+STEM = "one-system-v2"
 FONTS = {
     "GEIST": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2",
     "MONO": "https://fonts.gstatic.com/s/geistmono/v6/or3yQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeE9KK5U5Ck.woff2",
 }
 
-# Current GitHub pins (2026-08). Order is visual, not rank.
-# Each: (label, column, row) where column in {"L","R"} and row in {0,1}.
-PINS = [
+# Portfolio system parts (the six that form "one system" on sanlee.me).
+# Independent of which repos are currently *pinned* on the GitHub profile.
+# Each: (label, column, row) where column in {"L","R"} and row in {0,1,2}.
+SYSTEM_REPOS = [
     ("defense-news-classifier", "L", 0),
-    ("telltale", "R", 0),
+    ("faithfulness-judge", "R", 0),
     ("agent-ops", "L", 1),
-    ("netops-lab", "R", 1),
+    ("architecture", "R", 1),
+    ("kb-agent", "L", 2),
+    ("learning-notes", "R", 2),
 ]
 
-# Chip geometry
-CHIP_H = 48
+# Chip geometry — three rows, two columns, junction center
+CHIP_H = 44
 CHIP_RX = 4  # squared — matches portfolio --radius-sm, not app-pill
-ROW_Y = (318, 418)
+ROW_Y = (300, 380, 460)
 LEFT_X = 96
 RIGHT_EDGE = 1184  # right chips right-align to this
-JUNCTION = (640, 368)
-CTA_Y = 560
+JUNCTION = (640, 380)
+CTA_Y = 568
 
 
 def fetch_b64(url: str) -> str:
@@ -114,9 +122,9 @@ def chip_width(label: str) -> int:
 
 
 def chip_boxes() -> list[tuple[str, float, float, float, float]]:
-    """Return (label, x, y, w, h) for each pin."""
+    """Return (label, x, y, w, h) for each system repo chip."""
     boxes = []
-    for label, col, row in PINS:
+    for label, col, row in SYSTEM_REPOS:
         w = chip_width(label)
         cy = ROW_Y[row]
         y = cy - CHIP_H / 2
@@ -132,7 +140,7 @@ def beams_for(boxes: list[tuple[str, float, float, float, float]]) -> list[tuple
     """Cubic beams from each chip's inner edge to the junction."""
     jx, jy = JUNCTION
     out = []
-    delays = ["0s", "-0.7s", "-1.4s", "-2.1s"]
+    delays = ["0s", "-0.5s", "-1.0s", "-1.5s", "-2.0s", "-2.5s"]
     for i, (label, x, y, w, h) in enumerate(boxes):
         cy = y + h / 2
         # left chips exit right edge; right chips exit left edge
@@ -282,11 +290,13 @@ def svg(p: dict) -> str:
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "one-system-dark.svg").write_text(svg(DARK), encoding="utf-8")
-    (OUT / "one-system-light.svg").write_text(svg(LIGHT), encoding="utf-8")
-    print("dark:", (OUT / "one-system-dark.svg").stat().st_size, "bytes")
-    print("light:", (OUT / "one-system-light.svg").stat().st_size, "bytes")
-    print("pins:", ", ".join(lab for lab, _, _ in PINS))
+    dark = OUT / f"{STEM}-dark.svg"
+    light = OUT / f"{STEM}-light.svg"
+    dark.write_text(svg(DARK), encoding="utf-8")
+    light.write_text(svg(LIGHT), encoding="utf-8")
+    print("dark:", dark.stat().st_size, "bytes →", dark.name)
+    print("light:", light.stat().st_size, "bytes →", light.name)
+    print("system:", ", ".join(lab for lab, _, _ in SYSTEM_REPOS))
 
 
 if __name__ == "__main__":
