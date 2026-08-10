@@ -10,8 +10,12 @@ time and embedded as base64 ``@font-face`` data URIs. GitHub serves README image
 through a proxy that blocks *external* fetches, but inline data URIs render fine —
 that is the whole trick that makes a real webfont work here.
 
-Motion: beams carry light packets (CSS stroke-dashoffset), the junction pulses,
-the kicker dot blinks. Fully off under ``prefers-reduced-motion: reduce``.
+Motion: beams carry light packets (stroke-dashoffset), the junction pulses, the
+kicker dot blinks. Written as **SMIL** ``<animate>`` (works when the file is
+opened as a document — CSS alone dies under raw.githubusercontent.com's CSP
+``sandbox``) **plus** CSS ``@keyframes`` (works in some ``<img>`` hosts). Fully
+off under ``prefers-reduced-motion: reduce`` (CSS hides the animated layers;
+SMIL has no reduced-motion hook of its own).
 
 Palette follows the portfolio site (paper ground, ink, oxide) rather than the
 old Vercel blue/purple — so the profile graphic and sanlee.me share one face.
@@ -30,7 +34,7 @@ from pathlib import Path
 OUT = Path(__file__).resolve().parent.parent / "images"
 # Filename stem is versioned so GitHub's camo cache cannot serve a stale SVG
 # after a redesign (relative-path camo URLs key on the path).
-STEM = "one-system-v2"
+STEM = "one-system-v3"
 FONTS = {
     "GEIST": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2",
     "MONO": "https://fonts.gstatic.com/s/geistmono/v6/or3yQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeE9KK5U5Ck.woff2",
@@ -174,15 +178,25 @@ def chips_svg(p: dict, boxes: list) -> str:
 
 
 def beams_svg(p: dict, beam_paths: list) -> str:
+    # Longer dash + shorter gap so the packet is visible at README scale.
+    # Period 108 = dash+gap; animate offset by one period so the loop is seamless.
+    dash, gap, period = 18, 90, 108
     base = [
         f'<path d="{d}" fill="none" stroke="url(#{g})" stroke-width="1.5"/>'
         for d, g, _ in beam_paths
     ]
-    streaks = [
-        f'<path class="flow" d="{d}" fill="none" stroke="{p["packet"]}" '
-        f'stroke-width="1.8" stroke-linecap="round" style="animation-delay:{delay}"/>'
-        for d, _, delay in beam_paths
-    ]
+    streaks = []
+    for d, _, delay in beam_paths:
+        # CSS delay is "-0.5s"; SMIL begin wants the same negative offset.
+        streaks.append(
+            f'<path class="flow" d="{d}" fill="none" stroke="{p["packet"]}" '
+            f'stroke-width="2.2" stroke-linecap="round" '
+            f'stroke-dasharray="{dash} {gap}" stroke-dashoffset="0" '
+            f'style="animation-delay:{delay}">\n'
+            f'    <animate attributeName="stroke-dashoffset" from="0" to="-{period}" '
+            f'dur="2.8s" begin="{delay}" repeatCount="indefinite"/>\n'
+            f'  </path>'
+        )
     return "\n  ".join(base + streaks)
 
 
@@ -199,17 +213,14 @@ def svg(p: dict) -> str:
     <style>
       @font-face {{ font-family: 'Geist'; font-style: normal; font-weight: 100 900; src: url(data:font/woff2;base64,{b64["GEIST"]}) format('woff2'); }}
       @font-face {{ font-family: 'Geist Mono'; font-style: normal; font-weight: 400; src: url(data:font/woff2;base64,{b64["MONO"]}) format('woff2'); }}
-      .flow {{ stroke-dasharray: 6 122; stroke-dashoffset: 0; opacity: 0.85; animation: flow 3.2s linear infinite; }}
-      .flowv {{ stroke-dasharray: 6 112; stroke-dashoffset: 0; opacity: 0.85; animation: flowv 2.2s linear infinite; }}
-      .pulse {{ animation: pulse 2.6s cubic-bezier(0.22, 0.61, 0.36, 1) infinite; }}
-      .dotb {{ animation: blink 2.6s ease-in-out infinite; }}
-      @keyframes flow {{ to {{ stroke-dashoffset: -128; }} }}
-      @keyframes flowv {{ to {{ stroke-dashoffset: -118; }} }}
-      @keyframes pulse {{ 0% {{ opacity: 0.45; }} 70% {{ opacity: 0; }} 100% {{ opacity: 0; }} }}
-      @keyframes blink {{ 0%, 100% {{ opacity: 1; }} 50% {{ opacity: 0.35; }} }}
+      /* Motion is SMIL <animate> on the elements (not CSS @keyframes).
+         raw.githubusercontent.com ships CSP `sandbox`, which freezes CSS
+         animations in the top-level SVG document; SMIL still runs. */
+      .flow, .flowv {{ opacity: 0.95; }}
       @media (prefers-reduced-motion: reduce) {{
-        .flow, .flowv, .pulse, .dotb {{ animation: none !important; }}
-        .flow, .flowv, .pulse {{ opacity: 0; }}
+        .flow, .flowv, .pulse {{ opacity: 0 !important; }}
+        .dotb {{ opacity: 1 !important; }}
+        .flow animate, .flowv animate, .pulse animate, .dotb animate {{ display: none; }}
       }}
     </style>
     <!-- hairline grid: portfolio plates, not Vercel plus marks -->
@@ -260,7 +271,9 @@ def svg(p: dict) -> str:
   </g>
   <!-- kicker -->
   <rect x="88" y="72" width="248" height="30" rx="4" fill="{p["badge_fill"]}" stroke="{p["badge_stroke"]}" stroke-width="1.5"/>
-  <circle class="dotb" cx="108" cy="87" r="3.5" fill="{p["oxide"]}"/>
+  <circle class="dotb" cx="108" cy="87" r="3.5" fill="{p["oxide"]}">
+    <animate attributeName="opacity" values="1;0.25;1" dur="2.6s" repeatCount="indefinite"/>
+  </circle>
   <text x="122" y="91.5" font-family="'Geist Mono',Consolas,monospace" font-size="11" letter-spacing="2.2" fill="{p["meta"]}">THE REPOS ARE THE PARTS</text>
   <!-- heading -->
   <text x="86" y="168" font-family="'Geist','Segoe UI',sans-serif" font-size="56" font-weight="700" letter-spacing="-2"><tspan fill="url(#tgrad)">See it as </tspan><tspan fill="url(#hgrad)">one system</tspan></text>
@@ -271,12 +284,17 @@ def svg(p: dict) -> str:
   {beams_svg(p, beam_paths)}
   {chips_svg(p, boxes)}
   <!-- junction -->
-  <circle class="pulse" cx="{jx}" cy="{jy}" r="22" fill="none" stroke="{p["oxide"]}" stroke-width="2"/>
+  <circle class="pulse" cx="{jx}" cy="{jy}" r="22" fill="none" stroke="{p["oxide"]}" stroke-width="2" opacity="0.55">
+    <animate attributeName="opacity" values="0.55;0;0" keyTimes="0;0.7;1" dur="2.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.22 0.61 0.36 1; 0 0 1 1"/>
+    <animate attributeName="r" values="14;26;26" keyTimes="0;0.7;1" dur="2.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.22 0.61 0.36 1; 0 0 1 1"/>
+  </circle>
   <circle cx="{jx}" cy="{jy}" r="11" fill="none" stroke="{p["oxide"]}" stroke-width="2.5"/>
   <circle cx="{jx}" cy="{jy}" r="3.5" fill="{p["core"]}"/>
   <!-- stem + CTA -->
   <path d="M {jx} {jy + 14} V {CTA_Y - 28}" fill="none" stroke="{p["oxide"]}" stroke-width="2.5"/>
-  <path class="flowv" d="M {jx} {jy + 14} V {CTA_Y - 28}" fill="none" stroke="{p["packet"]}" stroke-width="2" stroke-linecap="round"/>
+  <path class="flowv" d="M {jx} {jy + 14} V {CTA_Y - 28}" fill="none" stroke="{p["packet"]}" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="18 90" stroke-dashoffset="0">
+    <animate attributeName="stroke-dashoffset" from="0" to="-108" dur="2.0s" repeatCount="indefinite"/>
+  </path>
   <polygon points="{jx - 7},{CTA_Y - 28} {jx + 7},{CTA_Y - 28} {jx},{CTA_Y - 16}" fill="{p["oxide"]}"/>
   <rect x="520" y="{CTA_Y}" width="240" height="54" rx="4" fill="{p["pill_fill"]}" filter="url(#pillshadow)"/>
   <text x="618" y="{CTA_Y + 34}" font-family="'Geist','Segoe UI',sans-serif" font-size="20" font-weight="600" text-anchor="middle" fill="{p["pill_text"]}">sanlee.me</text>
