@@ -4,9 +4,9 @@ Senior Product Associate at JPMorganChase in Employee Platforms — working on p
 for SharePoint Online and OneDrive, the collaboration surface every line of business
 in the firm uses. On the side I build AI systems in the open, run the way a technical
 program manager runs a program: I set the direction, the contracts, and the bar;
-Claude does most of the typing across a four-vendor agent fleet; the evals and
-postmortems are the proof. The public repos are the parts. How they fit together is
-on the portfolio:
+Claude does most of the typing across a five-vendor agent fleet (Claude, Codex,
+Cursor, Antigravity, Grok); the evals and postmortems are the proof. The public
+repos are the parts. How they fit together is on the portfolio:
 
 <a href="https://sanlee.me">
   <picture>
