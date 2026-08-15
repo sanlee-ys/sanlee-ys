@@ -12,8 +12,9 @@ and the **portfolio site** is the story of how the parts fit together.
 
 One graphic is a San ruling (2026-08-01), not a suggestion: the first redesign shipped a
 banner SVG plus the map, and he cut the banner the same day. The header is markdown text;
-the career arc lives as a small corner signature on the map. Don't reintroduce a second
-content image (Sango in the footer is the exception that already shipped).
+do not put a career-arc signature on the map — that claim already lives in the
+GitHub bio. Don't reintroduce a second content image (Sango in the footer is the
+exception that already shipped).
 
 **2026-08-09 redesign:** palette moved from Vercel blue/purple to the portfolio's paper /
 ink / oxide tokens so the profile and sanlee.me share one face; corners squared to match
@@ -30,10 +31,15 @@ runs). Stem `one-system-v6-*.svg`.
 inbound packet traces, scan sweep, GitHub-blue accent. No rust plate, no chip cards,
 no kicker badge. Stem `one-system-v7-*.svg`.
 
-**Chip set = portfolio system, not profile pins.** The six chips are the public parts of
-the system told on sanlee.me (classifier, faithfulness-judge, agent-ops, architecture,
-kb-agent, learning-notes). GitHub profile *pins* are a separate showcase choice and may
-diverge; do not retarget this map to whatever is currently pinned.
+**2026-08-15 redesign (v8):** left-to-right flow. classifier → faithfulness-judge →
+sanlee.me. telltale observes from above. agent-ops sits as the floor. Career arc
+removed (the GitHub bio already states NetOps → SWE → Product). Not six equal
+nodes. Stem `one-system-v8-*.svg`.
+
+**Map set is the flow four, not the profile pins.** The graphic names classifier,
+telltale, faithfulness-judge, and agent-ops. GitHub profile *pins* are a separate
+showcase choice and may diverge; do not retarget this map to whatever is currently
+pinned.
 
 This replaced the 2026-07 "shipped-facts blurbs" design (one measured paragraph per
 project, SYS-019 metric markers asserted by the `architecture` repo's checker). The
@@ -67,15 +73,14 @@ mechanism and its tests were kept for exactly that) and update this section.
 
 ## images/ — the two SVGs (GENERATED — edit the build script, not the SVGs)
 
-`one-system-v7-{dark,light}.svg` (1280×680), the page's only content graphic: centered
-"See it as one system" headline, six **system** repos as nodes on a dashed hex
-constellation, inbound packet traces into a small hex core, a stem down to a GitHub-style
-sanlee.me button, and the NET OPS → SOFTWARE → PRODUCT circuit trace as a small signature
-in the top-right corner. Background is the GitHub Primer canvas (no plate, no frame).
-Motion is **CSS `@keyframes`** (dual-cadence packets, hex dash chase, hub pulse/breathe,
-node pips, scan sweep) — that is what runs when GitHub embeds the SVG as `<img>` on the
-profile. SMIL does not drive the profile surface. Do not put angle-bracket tags inside
-the SVG's style comment block (XML parse error). Animated layers hide under
+`one-system-v8-{dark,light}.svg` (1280×680), the page's only content graphic: left
+"See it as one system" headline, a telltale observe-rail, then a left-to-right flow
+from classifier through faithfulness-judge to a sanlee.me plate, with agent-ops as
+the floor. No career-arc signature. Background is the GitHub Primer canvas (no plate,
+no frame). Motion is **CSS `@keyframes`** (packet connectors, observe-rail dash,
+scan sweep, node pips) — that is what runs when GitHub embeds the SVG as `<img>` on
+the profile. SMIL does not drive the profile surface. Do not put angle-bracket tags
+inside the SVG's style comment block (XML parse error). Animated layers hide under
 `prefers-reduced-motion`. The README wraps the image in a link to the site (SVGs
 rendered through `<img>` cannot carry live links themselves).
 
@@ -88,9 +93,9 @@ rendered through `<img>` cannot carry live links themselves).
 - Palette lives in the script's `DARK`/`LIGHT` dicts and follows **GitHub Primer**
   (dark canvas `#0d1117`, light canvas `#ffffff`, accent `#4493f8` / `#0969da`) so the
   graphic sits on the profile background.
-- **Chip set = `SYSTEM_REPOS` in the script** — the portfolio system six, not the
-  GitHub pin list. If that system set changes on sanlee.me, update the script in the
-  same sitting. Chip widths are computed per label.
+- **Map set is the flow four in the script** — classifier, telltale,
+  faithfulness-judge, agent-ops. Not the GitHub pin list. If that set changes,
+  update the script in the same sitting.
 - **Cache bust:** bump the `STEM` filename version when the graphic changes in a way
   readers must see immediately; GitHub camo keys on path and will keep serving a stale
   SVG for a long time if the path is unchanged.
@@ -122,8 +127,8 @@ did not sneak back in.)
 ## Copy rulings (San, 2026-08-01 — do not regress)
 
 - **The "From the wires up: …" tagline does not appear in prose here.** It lives on the
-  portfolio; restating it on this page too read as plastering. The NET OPS → SOFTWARE →
-  PRODUCT trace in the graphic's corner is the one permitted echo.
+  portfolio; restating it on this page too read as plastering. Do not echo
+  NetOps → software → product on the map; the GitHub bio already states it.
 - **He does not "run" product for SharePoint Online / OneDrive** — that is his lead's
   job; he works on it and covers. "Working on product for…" is the ceiling for this
   claim, here and anywhere else this page's copy gets reused.

@@ -15,45 +15,28 @@ Motion: CSS ``@keyframes`` only — that is what runs when GitHub embeds the SVG
 SVG style comment (XML parse error).
 
 Palette is GitHub Primer (dark canvas ``#0d1117``, light canvas ``#ffffff``,
-accent blue) so the graphic sits on the profile page instead of reading as a
-warm plate on top of it.
+accent blue) so the graphic sits on the profile page.
 
-The chip set is the **portfolio system** (six public parts that converge on
-sanlee.me) — NOT the GitHub profile pins. Repo names are labels, not claims.
+The map is a left-to-right sentence: classifier → faithfulness-judge → sanlee.me.
+telltale observes from above. agent-ops sits as the floor. Not six equal nodes,
+and not the career-arc signature — that claim already lives in the GitHub bio.
 """
 from __future__ import annotations
 
 import base64
-import math
 import urllib.request
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "images"
 # Filename stem is versioned so GitHub's camo cache cannot serve a stale SVG
 # after a redesign (relative-path camo URLs key on the path).
-STEM = "one-system-v7"
+STEM = "one-system-v8"
 FONTS = {
     "GEIST": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2",
     "MONO": "https://fonts.gstatic.com/s/geistmono/v6/or3yQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeE9KK5U5Ck.woff2",
 }
 
-# Flattened hex (no north/south vertices) so the heading and CTA keep the
-# vertical band. Angle 0 = east, counter-clockwise, y-up.
-# Each: (label, angle_deg)
-SYSTEM_REPOS = [
-    ("defense-news-classifier", 155),
-    ("faithfulness-judge", 25),
-    ("agent-ops", 180),
-    ("architecture", 0),
-    ("kb-agent", 205),
-    ("learning-notes", 335),
-]
-
 W, H = 1280, 680
-CX, CY = 640, 392
-NODE_R = 248
-RING_R = 54
-CTA_Y = 604
 
 
 def fetch_b64(url: str) -> str:
@@ -67,7 +50,7 @@ def fetch_b64(url: str) -> str:
 b64 = {k: fetch_b64(u) for k, u in FONTS.items()}
 
 # GitHub Primer tokens — dark matches the profile canvas, light matches
-# prefers-color-scheme: light. Accent is Primer accent-fg, not portfolio oxide.
+# prefers-color-scheme: light.
 LIGHT = dict(
     bg="#ffffff",
     elevated="#f6f8fa",
@@ -80,8 +63,6 @@ LIGHT = dict(
     accent_soft="#218bff",
     packet="#0969da",
     packet_soft="#54aeff",
-    node_fill="#ffffff",
-    core="#1f2328",
     button_fill="#f6f8fa",
     button_stroke="#d0d7de",
     button_text="#0969da",
@@ -100,8 +81,6 @@ DARK = dict(
     accent_soft="#79c0ff",
     packet="#79c0ff",
     packet_soft="#388bfd",
-    node_fill="#0d1117",
-    core="#f0f6fc",
     button_fill="#21262d",
     button_stroke="#3d444d",
     button_text="#4493f8",
@@ -110,149 +89,24 @@ DARK = dict(
 )
 
 
-def polar(angle_deg: float, radius: float) -> tuple[float, float]:
-    a = math.radians(angle_deg)
-    return CX + radius * math.cos(a), CY - radius * math.sin(a)
-
-
-def nodes() -> list[tuple[str, float, float, float]]:
-    """Return (label, angle, x, y) for each system repo."""
-    return [(label, ang, *polar(ang, NODE_R)) for label, ang in SYSTEM_REPOS]
-
-
-def hex_d(cx: float, cy: float, r: float, rot: float = 0.0) -> str:
-    pts = []
-    for i in range(6):
-        a = math.radians(60 * i - 30 + rot)
-        pts.append(f"{cx + r * math.cos(a):.1f},{cy + r * math.sin(a):.1f}")
-    return "M " + " L ".join(pts) + " Z"
-
-
-def constellation_d(pts: list[tuple[float, float]]) -> str:
-    ordered = sorted(pts, key=lambda p: math.atan2(CY - p[1], p[0] - CX))
-    body = " L ".join(f"{x:.1f},{y:.1f}" for x, y in ordered)
-    return f"M {body} Z"
-
-
-def spoke_d(nx: float, ny: float) -> str:
-    dx, dy = nx - CX, ny - CY
-    length = math.hypot(dx, dy)
-    ux, uy = dx / length, dy / length
-    sx, sy = nx - ux * 14, ny - uy * 14
-    ex, ey = CX + ux * RING_R, CY + uy * RING_R
-    return f"M {sx:.1f} {sy:.1f} L {ex:.1f} {ey:.1f}"
-
-
-def nodes_svg(p: dict, repo_nodes: list) -> str:
-    parts = []
-    for i, (label, _ang, x, y) in enumerate(repo_nodes):
-        left = x < CX
-        anchor = "end" if left else "start"
-        tx = x - 16 if left else x + 16
-        parts.append(
-            f'<circle class="pip pip{i}" cx="{x:.1f}" cy="{y:.1f}" '
-            f'r="5.2" fill="{p["accent"]}"/>'
-        )
-        parts.append(
-            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="9.5" fill="none" '
-            f'stroke="{p["border"]}" stroke-width="1.2"/>'
-        )
-        parts.append(
-            f'<text x="{tx:.1f}" y="{y + 4.5:.1f}" '
-            f'font-family="\'Geist Mono\',Consolas,monospace" font-size="13" '
-            f'letter-spacing="0.4" text-anchor="{anchor}" '
-            f'fill="{p["ink"]}">{label}</text>'
-        )
-    return "\n  ".join(parts)
-
-
-def spokes_svg(p: dict, repo_nodes: list) -> str:
-    delays = ["0s", "-0.45s", "-0.9s", "-1.35s", "-1.8s", "-2.25s"]
-    base = []
-    carriers = []
-    streaks = []
-    for i, (_label, _ang, x, y) in enumerate(repo_nodes):
-        d = spoke_d(x, y)
-        delay = delays[i]
-        base.append(
-            f'<path d="{d}" fill="none" stroke="{p["hairline"]}" stroke-width="1.15"/>'
-        )
-        carriers.append(
-            f'<path class="carrier" d="{d}" fill="none" stroke="{p["packet_soft"]}" '
-            f'stroke-width="1.6" stroke-linecap="round" style="animation-delay:{delay}"/>'
-        )
-        streaks.append(
-            f'<path class="flow" d="{d}" fill="none" stroke="{p["packet"]}" '
-            f'stroke-width="2.2" stroke-linecap="round" style="animation-delay:{delay}"/>'
-        )
-    return "\n  ".join(base + carriers + streaks)
-
-
-def hub_svg(p: dict) -> str:
-    return f'''<!-- hub -->
-  <path class="orbit" d="{hex_d(CX, CY, RING_R + 10)}" fill="none" stroke="{p["border"]}" stroke-width="1.1"/>
-  <circle cx="{CX}" cy="{CY}" r="{RING_R}" fill="none" stroke="{p["hairline"]}" stroke-width="1"/>
-  <circle class="pulse" cx="{CX}" cy="{CY}" r="26" fill="none" stroke="{p["accent"]}" stroke-width="1.4"/>
-  <circle class="pulse2" cx="{CX}" cy="{CY}" r="16" fill="none" stroke="{p["accent_soft"]}" stroke-width="1.2"/>
-  <path d="{hex_d(CX, CY, 9)}" fill="none" stroke="{p["accent"]}" stroke-width="1.8"/>
-  <circle class="core-breathe" cx="{CX}" cy="{CY}" r="3.2" fill="{p["core"]}"/>'''
-
-
-def career_arc_svg(p: dict) -> str:
-    return f'''<!-- career arc -->
-  <path d="M 928 128 H 1006 L 1030 110 H 1108 L 1132 92 H 1194" fill="none" stroke="{p["hairline"]}" stroke-width="1.4"/>
-  <rect x="922" y="122" width="12" height="12" rx="1.5" fill="none" stroke="{p["accent"]}" stroke-width="1.5"/>
-  <circle cx="1069" cy="110" r="5" fill="none" stroke="{p["accent"]}" stroke-width="1.5"/>
-  <rect x="1194" y="86" width="12" height="12" rx="1.5" transform="rotate(45 1200 92)" fill="{p["accent"]}"/>
-  <g font-family="'Geist Mono',Consolas,monospace" font-size="10" letter-spacing="2" fill="{p["meta"]}">
-    <text x="928" y="152" text-anchor="middle">NET&#160;OPS</text>
-    <text x="1069" y="134" text-anchor="middle">SOFTWARE</text>
-    <text x="1200" y="116" text-anchor="middle">PRODUCT</text>
-  </g>'''
-
-
 def css_motion() -> str:
     return """
       .flow {
-        stroke-dasharray: 14 70;
+        stroke-dasharray: 14 64;
         stroke-dashoffset: 0;
         opacity: 0.95;
         animation: flow 1.8s linear infinite;
       }
       .carrier {
-        stroke-dasharray: 5 50;
+        stroke-dasharray: 5 46;
         stroke-dashoffset: 0;
         opacity: 0.45;
         animation: flow 3.2s linear infinite reverse;
       }
-      .flowv {
-        stroke-dasharray: 12 42;
+      .ribbon {
+        stroke-dasharray: 8 18;
         stroke-dashoffset: 0;
-        opacity: 0.95;
-        animation: flowv 1.6s linear infinite;
-      }
-      .orbit {
-        stroke-dasharray: 5 13;
-        stroke-dashoffset: 0;
-        animation: orbit 16s linear infinite;
-      }
-      .constellation {
-        stroke-dasharray: 3 11;
-        stroke-dashoffset: 0;
-        opacity: 0.7;
-        animation: orbit 28s linear infinite reverse;
-      }
-      .pulse {
-        opacity: 0.7;
-        animation: pulse 2.4s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
-      }
-      .pulse2 {
-        opacity: 0.5;
-        animation: pulse 2.4s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
-        animation-delay: 0.6s;
-      }
-      .core-breathe {
-        animation: breathe 2.8s ease-in-out infinite;
+        animation: flow 7s linear infinite;
       }
       .glow-breathe {
         animation: glowbreathe 5s ease-in-out infinite;
@@ -261,24 +115,9 @@ def css_motion() -> str:
         animation: scan 11s linear infinite;
       }
       .pip { opacity: 0.4; animation: pip 3.6s ease-in-out infinite; }
-      .pip0 { animation-delay: 0s; }
-      .pip1 { animation-delay: 0.6s; }
-      .pip2 { animation-delay: 1.2s; }
-      .pip3 { animation-delay: 1.8s; }
-      .pip4 { animation-delay: 2.4s; }
-      .pip5 { animation-delay: 3.0s; }
-      @keyframes flow { to { stroke-dashoffset: -84; } }
-      @keyframes flowv { to { stroke-dashoffset: -54; } }
-      @keyframes orbit { to { stroke-dashoffset: -108; } }
-      @keyframes pulse {
-        0% { opacity: 0.7; }
-        55% { opacity: 0; }
-        100% { opacity: 0; }
-      }
-      @keyframes breathe {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.4; }
-      }
+      .pip1 { animation-delay: 1.2s; }
+      .pip2 { animation-delay: 2.4s; }
+      @keyframes flow { to { stroke-dashoffset: -78; } }
       @keyframes glowbreathe {
         0%, 100% { opacity: 1; }
         50% { opacity: 0.55; }
@@ -293,25 +132,27 @@ def css_motion() -> str:
         32% { opacity: 0.4; }
       }
       @media (prefers-reduced-motion: reduce) {
-        .flow, .carrier, .flowv, .orbit, .constellation, .pulse, .pulse2,
-        .core-breathe, .glow-breathe, .scan, .pip { animation: none !important; }
-        .flow, .carrier, .flowv, .pulse, .pulse2, .scan { opacity: 0; }
+        .flow, .carrier, .ribbon, .glow-breathe, .scan, .pip {
+          animation: none !important;
+        }
+        .flow, .carrier, .scan { opacity: 0; }
         .pip { opacity: 0.85; }
-        .core-breathe, .glow-breathe, .constellation { opacity: 1; }
+        .ribbon, .glow-breathe { opacity: 1; }
       }
 """
 
 
-def svg(p: dict) -> str:
-    repo_nodes = nodes()
-    labels = ", ".join(lab for lab, *_ in repo_nodes)
-    hex_pts = [(x, y) for _lab, _ang, x, y in repo_nodes]
-    stem_top = CY + RING_R + 12
-    stem_bot = CTA_Y - 22
+def connector(p: dict, x1: int, x2: int, y: int, delay: str) -> str:
+    return f'''  <path d="M {x1} {y} H {x2}" fill="none" stroke="{p["hairline"]}" stroke-width="1.2"/>
+  <path class="carrier" d="M {x1} {y} H {x2}" fill="none" stroke="{p["packet_soft"]}" stroke-width="1.6" stroke-linecap="round" style="animation-delay:{delay}"/>
+  <path class="flow" d="M {x1} {y} H {x2}" fill="none" stroke="{p["packet"]}" stroke-width="2.2" stroke-linecap="round" style="animation-delay:{delay}"/>
+  <polygon points="{x2},{y - 6} {x2 + 14},{y} {x2},{y + 6}" fill="{p["accent"]}"/>'''
 
+
+def svg(p: dict) -> str:
     return f'''<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mapTitle mapDesc">
   <title id="mapTitle">See it as one system — sanlee.me</title>
-  <desc id="mapDesc">Six repository nodes — {labels} — sit on a hex constellation and send traces into a central core that points down to a sanlee.me button under the heading "See it as one system." A small circuit trace rises through net ops, software, and product in the top right corner.</desc>
+  <desc id="mapDesc">A left-to-right flow from classifier through faithfulness-judge to sanlee.me. A telltale ribbon observes from above. agent-ops sits as the floor under the heading "See it as one system."</desc>
   <defs>
     <style>
       @font-face {{ font-family: 'Geist'; font-style: normal; font-weight: 100 900; src: url(data:font/woff2;base64,{b64["GEIST"]}) format('woff2'); }}
@@ -330,25 +171,29 @@ def svg(p: dict) -> str:
     </linearGradient>
   </defs>
   <rect x="0" y="0" width="{W}" height="{H}" fill="{p["bg"]}"/>
-  <ellipse class="glow-breathe" cx="{CX}" cy="{CY}" rx="380" ry="200" fill="url(#glow)"/>
+  <ellipse class="glow-breathe" cx="640" cy="360" rx="420" ry="200" fill="url(#glow)"/>
   <g class="scan">
     <rect x="0" y="0" width="{W}" height="110" fill="url(#scanGrad)"/>
   </g>
-  <path class="constellation" d="{constellation_d(hex_pts)}" fill="none" stroke="{p["border"]}" stroke-width="1"/>
-  {career_arc_svg(p)}
-  <text x="72" y="86" font-family="'Geist','Segoe UI',sans-serif" font-size="46" font-weight="600" letter-spacing="-1.4"><tspan fill="{p["ink"]}">See it as </tspan><tspan fill="{p["accent"]}">one system</tspan></text>
-  <text x="74" y="120" font-family="'Geist','Segoe UI',sans-serif" font-size="15" font-weight="400" fill="{p["argument"]}">six public parts converge — decisions recorded, reversals included</text>
-  {spokes_svg(p, repo_nodes)}
-  {nodes_svg(p, repo_nodes)}
-  {hub_svg(p)}
-  <path d="M {CX} {stem_top} V {stem_bot}" fill="none" stroke="{p["accent"]}" stroke-width="1.6"/>
-  <path class="flowv" d="M {CX} {stem_top} V {stem_bot}" fill="none" stroke="{p["packet"]}" stroke-width="2" stroke-linecap="round"/>
-  <polygon points="{CX - 5},{stem_bot} {CX + 5},{stem_bot} {CX},{stem_bot + 9}" fill="{p["accent"]}"/>
-  <rect x="540" y="{CTA_Y}" width="200" height="44" rx="6" fill="{p["button_fill"]}" stroke="{p["button_stroke"]}" stroke-width="1"/>
-  <text x="{CX - 8}" y="{CTA_Y + 28}" font-family="'Geist','Segoe UI',sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="{p["button_text"]}">sanlee.me</text>
-  <g stroke="{p["button_text"]}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <path d="M {CX + 46} {CTA_Y + 22} H {CX + 62} M {CX + 56} {CTA_Y + 16} L {CX + 62} {CTA_Y + 22} L {CX + 56} {CTA_Y + 28}"/>
-  </g>
+  <text x="72" y="78" font-family="'Geist','Segoe UI',sans-serif" font-size="46" font-weight="600" letter-spacing="-1.4"><tspan fill="{p["ink"]}">See it as </tspan><tspan fill="{p["accent"]}">one system</tspan></text>
+  <text x="74" y="112" font-family="'Geist','Segoe UI',sans-serif" font-size="15" font-weight="400" fill="{p["argument"]}">the public work, and the gauge that watches it</text>
+  <text x="72" y="168" font-family="'Geist Mono',Consolas,monospace" font-size="11" letter-spacing="2.4" fill="{p["meta"]}">OBSERVES</text>
+  <circle class="pip" cx="96" cy="200" r="4.5" fill="{p["accent"]}"/>
+  <text x="116" y="206" font-family="'Geist','Segoe UI',sans-serif" font-size="22" font-weight="600" fill="{p["ink"]}">telltale</text>
+  <path class="ribbon" d="M 240 200 H 1208" fill="none" stroke="{p["accent"]}" stroke-width="1.5"/>
+  <rect x="72" y="292" width="320" height="132" rx="10" fill="{p["elevated"]}" stroke="{p["border"]}" stroke-width="1"/>
+  <text x="96" y="340" font-family="'Geist','Segoe UI',sans-serif" font-size="28" font-weight="600" fill="{p["ink"]}">classifier</text>
+  <text x="96" y="376" font-family="'Geist','Segoe UI',sans-serif" font-size="14" fill="{p["argument"]}">the product that has to be right</text>
+{connector(p, 392, 496, 358, "0s")}
+  <rect x="510" y="292" width="320" height="132" rx="10" fill="{p["elevated"]}" stroke="{p["border"]}" stroke-width="1"/>
+  <text x="534" y="340" font-family="'Geist','Segoe UI',sans-serif" font-size="24" font-weight="600" fill="{p["ink"]}">faithfulness-judge</text>
+  <text x="534" y="376" font-family="'Geist','Segoe UI',sans-serif" font-size="14" fill="{p["argument"]}">checks the claims before they land</text>
+{connector(p, 830, 934, 358, "-0.8s")}
+  <rect x="948" y="308" width="232" height="100" rx="10" fill="{p["button_fill"]}" stroke="{p["button_stroke"]}" stroke-width="1"/>
+  <text x="1064" y="366" font-family="'Geist','Segoe UI',sans-serif" font-size="22" font-weight="600" text-anchor="middle" fill="{p["button_text"]}">sanlee.me</text>
+  <circle class="pip pip2" cx="86" cy="512" r="3.8" fill="{p["accent"]}"/>
+  <text x="104" y="518" font-family="'Geist Mono',Consolas,monospace" font-size="14" fill="{p["ink"]}">agent-ops</text>
+  <text x="104" y="542" font-family="'Geist','Segoe UI',sans-serif" font-size="13" fill="{p["meta"]}">the operating layer under the work</text>
 </svg>
 '''
 
@@ -361,7 +206,7 @@ def main() -> None:
     light.write_text(svg(LIGHT), encoding="utf-8")
     print("dark:", dark.stat().st_size, "bytes →", dark.name)
     print("light:", light.stat().st_size, "bytes →", light.name)
-    print("system:", ", ".join(lab for lab, _ in SYSTEM_REPOS))
+    print("system: classifier, telltale, faithfulness-judge, agent-ops")
 
 
 if __name__ == "__main__":
