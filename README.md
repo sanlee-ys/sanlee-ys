@@ -10,9 +10,9 @@ repos are the parts. How they fit together is on the portfolio:
 
 <a href="https://sanlee.me">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/one-system-v7-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/one-system-v7-light.svg">
-    <img alt="See it as one system: the six system repos converge into one node that points to sanlee.me" src="images/one-system-v7-dark.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="images/one-system-v8-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/one-system-v8-light.svg">
+    <img alt="See it as one system: classifier flows through faithfulness-judge to sanlee.me, with telltale observing from above" src="images/one-system-v8-dark.svg">
   </picture>
 </a>
 
