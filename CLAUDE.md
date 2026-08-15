@@ -25,6 +25,11 @@ dashed-orbit reticle, dual-cadence packet streams, sequential chip LEDs, dot fie
 of hairline grid. Motion is still CSS `@keyframes` only (what GitHub's profile `<img>`
 runs). Stem `one-system-v6-*.svg`.
 
+**2026-08-14 redesign (v7):** constellation on GitHub Primer canvas. Dark fill is
+`#0d1117` so the graphic sits on the profile page. Six repo nodes on a dashed hex,
+inbound packet traces, scan sweep, GitHub-blue accent. No rust plate, no chip cards,
+no kicker badge. Stem `one-system-v7-*.svg`.
+
 **Chip set = portfolio system, not profile pins.** The six chips are the public parts of
 the system told on sanlee.me (classifier, faithfulness-judge, agent-ops, architecture,
 kb-agent, learning-notes). GitHub profile *pins* are a separate showcase choice and may
@@ -62,14 +67,13 @@ mechanism and its tests were kept for exactly that) and update this section.
 
 ## images/ — the two SVGs (GENERATED — edit the build script, not the SVGs)
 
-`one-system-v6-{dark,light}.svg` (1280×680), the page's only content graphic: badge
-kicker, two-tone "See it as one system" headline, the six **system** repos as bordered
-mono chips with sequential oxide LEDs, elbowed collector spokes into an instrument
-reticle (dual dashed orbits + crosshair ticks + staggered pulse rings), a stem down to a
-sanlee.me plate, and the NET OPS → SOFTWARE → PRODUCT circuit trace as a small signature
-in the top-right corner. Background is a sparse dot field (not a line grid). Motion is
-**CSS `@keyframes`** (dual-cadence packets, orbit dash chase, hub pulse/breathe, LED
-sequence, glow breathe) — that is what runs when GitHub embeds the SVG as `<img>` on the
+`one-system-v7-{dark,light}.svg` (1280×680), the page's only content graphic: centered
+"See it as one system" headline, six **system** repos as nodes on a dashed hex
+constellation, inbound packet traces into a small hex core, a stem down to a GitHub-style
+sanlee.me button, and the NET OPS → SOFTWARE → PRODUCT circuit trace as a small signature
+in the top-right corner. Background is the GitHub Primer canvas (no plate, no frame).
+Motion is **CSS `@keyframes`** (dual-cadence packets, hex dash chase, hub pulse/breathe,
+node pips, scan sweep) — that is what runs when GitHub embeds the SVG as `<img>` on the
 profile. SMIL does not drive the profile surface. Do not put angle-bracket tags inside
 the SVG's style comment block (XML parse error). Animated layers hide under
 `prefers-reduced-motion`. The README wraps the image in a link to the site (SVGs
@@ -81,9 +85,9 @@ rendered through `<img>` cannot carry live links themselves).
   real webfont renders inside GitHub's proxied `<img>`, which blocks *external* fetches
   but not inline data. Hand-edits to the SVGs get overwritten; change the script and
   rebuild both variants in the same commit.
-- Palette lives in the script's `DARK`/`LIGHT` dicts and follows the **portfolio** tokens
-  (paper `#fafaf9`, ink `#1e1c1b`, oxide `#5e1f0d` / dark oxide `#c45a3a`) — not the
-  retired Vercel blue/purple.
+- Palette lives in the script's `DARK`/`LIGHT` dicts and follows **GitHub Primer**
+  (dark canvas `#0d1117`, light canvas `#ffffff`, accent `#4493f8` / `#0969da`) so the
+  graphic sits on the profile background.
 - **Chip set = `SYSTEM_REPOS` in the script** — the portfolio system six, not the
   GitHub pin list. If that system set changes on sanlee.me, update the script in the
   same sitting. Chip widths are computed per label.
