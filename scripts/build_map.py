@@ -18,7 +18,8 @@ Palette is GitHub Primer (dark canvas ``#0d1117``, light canvas ``#ffffff``,
 accent blue) so the graphic sits on the profile page.
 
 The map is a left-to-right sentence: classifier → faithfulness-judge → sanlee.me.
-telltale observes from above. agent-ops sits as the floor. Not six equal nodes,
+telltale and agent-ops are sibling repos, each in its own box: telltale observes
+from above; agent-ops is the operating layer under the flow. Not six equal nodes,
 and not the career-arc signature — that claim already lives in the GitHub bio.
 """
 from __future__ import annotations
@@ -30,13 +31,13 @@ from pathlib import Path
 OUT = Path(__file__).resolve().parent.parent / "images"
 # Filename stem is versioned so GitHub's camo cache cannot serve a stale SVG
 # after a redesign (relative-path camo URLs key on the path).
-STEM = "one-system-v8"
+STEM = "one-system-v9"
 FONTS = {
     "GEIST": "https://fonts.gstatic.com/s/geist/v5/gyByhwUxId8gMEwcGFU.woff2",
     "MONO": "https://fonts.gstatic.com/s/geistmono/v6/or3yQ6H-1_WfwkMZI_qYPLs1a-t7PU0AbeE9KK5U5Ck.woff2",
 }
 
-W, H = 1280, 680
+W, H = 1280, 920
 
 
 def fetch_b64(url: str) -> str:
@@ -49,11 +50,10 @@ def fetch_b64(url: str) -> str:
 
 b64 = {k: fetch_b64(u) for k, u in FONTS.items()}
 
-# GitHub Primer tokens — dark matches the profile canvas, light matches
-# prefers-color-scheme: light.
 LIGHT = dict(
     bg="#ffffff",
     elevated="#f6f8fa",
+    inset="#ffffff",
     border="#8c959f",
     hairline="#d0d7de",
     ink="#1f2328",
@@ -72,6 +72,7 @@ LIGHT = dict(
 DARK = dict(
     bg="#0d1117",
     elevated="#151b23",
+    inset="#0d1117",
     border="#3d444d",
     hairline="#21262d",
     ink="#f0f6fc",
@@ -112,7 +113,7 @@ def css_motion() -> str:
         animation: glowbreathe 5s ease-in-out infinite;
       }
       .scan {
-        animation: scan 11s linear infinite;
+        animation: scan 12s linear infinite;
       }
       .pip { opacity: 0.4; animation: pip 3.6s ease-in-out infinite; }
       .pip1 { animation-delay: 1.2s; }
@@ -124,7 +125,7 @@ def css_motion() -> str:
       }
       @keyframes scan {
         from { transform: translate(0px, -120px); }
-        to { transform: translate(0px, 720px); }
+        to { transform: translate(0px, 980px); }
       }
       @keyframes pip {
         0%, 100% { opacity: 0.35; }
@@ -149,10 +150,62 @@ def connector(p: dict, x1: int, x2: int, y: int, delay: str) -> str:
   <polygon points="{x2},{y - 6} {x2 + 14},{y} {x2},{y + 6}" fill="{p["accent"]}"/>'''
 
 
+def drop(p: dict, x: int, y1: int, y2: int, kind: str, delay: str) -> str:
+    cls = "ribbon" if kind == "observe" else "flow"
+    stroke = p["accent"] if kind == "observe" else p["packet"]
+    return f'''  <path class="{cls}" d="M {x} {y1} V {y2}" fill="none" stroke="{stroke}" stroke-width="1.5" stroke-linecap="round" style="animation-delay:{delay}"/>'''
+
+
+def cell(p: dict, x: int, y: int, w: int, h: int, title: str, sub: str) -> str:
+    return f'''  <rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" fill="{p["inset"]}" stroke="{p["hairline"]}" stroke-width="1"/>
+  <text x="{x + 16}" y="{y + 28}" font-family="'Geist Mono',Consolas,monospace" font-size="13" fill="{p["ink"]}">{title}</text>
+  <text x="{x + 16}" y="{y + 50}" font-family="'Geist','Segoe UI',sans-serif" font-size="13" fill="{p["argument"]}">{sub}</text>'''
+
+
+def repo_tab(p: dict, x: int, y: int) -> str:
+    return f'''  <path d="M {x} {y + 18} V {y + 8} Q {x} {y} {x + 8} {y} H {x + 108} Q {x + 116} {y} {x + 116} {y + 8} V {y + 18} Z" fill="{p["elevated"]}" stroke="{p["accent"]}" stroke-width="1.4"/>
+  <circle class="pip" cx="{x + 20}" cy="{y + 9}" r="3.4" fill="{p["accent"]}"/>
+  <text x="{x + 32}" y="{y + 13}" font-family="'Geist Mono',Consolas,monospace" font-size="11" letter-spacing="1.6" fill="{p["accent"]}">REPO</text>'''
+
+
 def svg(p: dict) -> str:
+    # Shared horizontal inset.
+    x0 = 56
+    inner = 1168
+
+    # Telltale repo box
+    tt_y = 124
+    tt_h = 176
+    # Flow band
+    fl_y = 368
+    fl_h = 168
+    # agent-ops repo box
+    ao_y = 612
+    ao_h = 236
+
+    c1_x, c1_w = 56, 348
+    c2_x, c2_w = 468, 372
+    site_x, site_w = 904, 320
+    mid_y = fl_y + fl_h // 2
+
+    tt_cells = [
+        (76, "council", "dispatch room"),
+        (456, "hud", "cross-vendor gauges"),
+        (836, "statusline", "measured numbers only"),
+    ]
+    ao_cells = [
+        (76, "guards", "fence at tool time"),
+        (364, "incidents", "blameless postmortems"),
+        (652, "conventions", "working agreements"),
+        (940, "decisions", "ADRs · fleet routing"),
+    ]
+
+    tt_cell_svg = "\n".join(cell(p, cx, tt_y + 96, 368, 64, title, sub) for cx, title, sub in tt_cells)
+    ao_cell_svg = "\n".join(cell(p, cx, ao_y + 148, 264, 64, title, sub) for cx, title, sub in ao_cells)
+
     return f'''<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mapTitle mapDesc">
   <title id="mapTitle">See it as one system — sanlee.me</title>
-  <desc id="mapDesc">A left-to-right flow from classifier through faithfulness-judge to sanlee.me. A telltale ribbon observes from above. agent-ops sits as the floor under the heading "See it as one system."</desc>
+  <desc id="mapDesc">Two sibling repos around a product flow. telltale observes from its own box. classifier flows through faithfulness-judge to sanlee.me. agent-ops is the operating-layer box under the flow.</desc>
   <defs>
     <style>
       @font-face {{ font-family: 'Geist'; font-style: normal; font-weight: 100 900; src: url(data:font/woff2;base64,{b64["GEIST"]}) format('woff2'); }}
@@ -171,29 +224,46 @@ def svg(p: dict) -> str:
     </linearGradient>
   </defs>
   <rect x="0" y="0" width="{W}" height="{H}" fill="{p["bg"]}"/>
-  <ellipse class="glow-breathe" cx="640" cy="360" rx="420" ry="200" fill="url(#glow)"/>
+  <ellipse class="glow-breathe" cx="640" cy="470" rx="460" ry="260" fill="url(#glow)"/>
   <g class="scan">
     <rect x="0" y="0" width="{W}" height="110" fill="url(#scanGrad)"/>
   </g>
-  <text x="72" y="78" font-family="'Geist','Segoe UI',sans-serif" font-size="46" font-weight="600" letter-spacing="-1.4"><tspan fill="{p["ink"]}">See it as </tspan><tspan fill="{p["accent"]}">one system</tspan></text>
-  <text x="74" y="112" font-family="'Geist','Segoe UI',sans-serif" font-size="15" font-weight="400" fill="{p["argument"]}">the public work, and the gauge that watches it</text>
-  <text x="72" y="168" font-family="'Geist Mono',Consolas,monospace" font-size="11" letter-spacing="2.4" fill="{p["meta"]}">OBSERVES</text>
-  <circle class="pip" cx="96" cy="200" r="4.5" fill="{p["accent"]}"/>
-  <text x="116" y="206" font-family="'Geist','Segoe UI',sans-serif" font-size="22" font-weight="600" fill="{p["ink"]}">telltale</text>
-  <path class="ribbon" d="M 240 200 H 1208" fill="none" stroke="{p["accent"]}" stroke-width="1.5"/>
-  <rect x="72" y="292" width="320" height="132" rx="10" fill="{p["elevated"]}" stroke="{p["border"]}" stroke-width="1"/>
-  <text x="96" y="340" font-family="'Geist','Segoe UI',sans-serif" font-size="28" font-weight="600" fill="{p["ink"]}">classifier</text>
-  <text x="96" y="376" font-family="'Geist','Segoe UI',sans-serif" font-size="14" fill="{p["argument"]}">the product that has to be right</text>
-{connector(p, 392, 496, 358, "0s")}
-  <rect x="510" y="292" width="320" height="132" rx="10" fill="{p["elevated"]}" stroke="{p["border"]}" stroke-width="1"/>
-  <text x="534" y="340" font-family="'Geist','Segoe UI',sans-serif" font-size="24" font-weight="600" fill="{p["ink"]}">faithfulness-judge</text>
-  <text x="534" y="376" font-family="'Geist','Segoe UI',sans-serif" font-size="14" fill="{p["argument"]}">checks the claims before they land</text>
-{connector(p, 830, 934, 358, "-0.8s")}
-  <rect x="948" y="308" width="232" height="100" rx="10" fill="{p["button_fill"]}" stroke="{p["button_stroke"]}" stroke-width="1"/>
-  <text x="1064" y="366" font-family="'Geist','Segoe UI',sans-serif" font-size="22" font-weight="600" text-anchor="middle" fill="{p["button_text"]}">sanlee.me</text>
-  <circle class="pip pip2" cx="86" cy="512" r="3.8" fill="{p["accent"]}"/>
-  <text x="104" y="518" font-family="'Geist Mono',Consolas,monospace" font-size="14" fill="{p["ink"]}">agent-ops</text>
-  <text x="104" y="542" font-family="'Geist','Segoe UI',sans-serif" font-size="13" fill="{p["meta"]}">the operating layer under the work</text>
+  <text x="56" y="58" font-family="'Geist','Segoe UI',sans-serif" font-size="42" font-weight="600" letter-spacing="-1.3"><tspan fill="{p["ink"]}">See it as </tspan><tspan fill="{p["accent"]}">one system</tspan></text>
+  <text x="58" y="90" font-family="'Geist','Segoe UI',sans-serif" font-size="15" font-weight="400" fill="{p["argument"]}">two repos around the work, and the site they ship to</text>
+
+{repo_tab(p, 72, tt_y)}
+  <rect x="{x0}" y="{tt_y + 16}" width="{inner}" height="{tt_h}" rx="10" fill="{p["elevated"]}" stroke="{p["accent"]}" stroke-width="1.4"/>
+  <text x="80" y="{tt_y + 54}" font-family="'Geist','Segoe UI',sans-serif" font-size="26" font-weight="600" fill="{p["ink"]}">telltale</text>
+  <text x="214" y="{tt_y + 54}" font-family="'Geist Mono',Consolas,monospace" font-size="13" fill="{p["meta"]}">sanlee-ys/telltale</text>
+  <text x="80" y="{tt_y + 80}" font-family="'Geist','Segoe UI',sans-serif" font-size="14" fill="{p["accent"]}">observes only · never routes</text>
+{tt_cell_svg}
+{drop(p, 260, tt_y + 16 + tt_h, fl_y, "observe", "0s")}
+{drop(p, 654, tt_y + 16 + tt_h, fl_y, "observe", "-2.2s")}
+{drop(p, 1064, tt_y + 16 + tt_h, fl_y, "observe", "-4.4s")}
+
+  <rect x="{c1_x}" y="{fl_y}" width="{c1_w}" height="{fl_h}" rx="10" fill="{p["elevated"]}" stroke="{p["border"]}" stroke-width="1"/>
+  <text x="{c1_x + 24}" y="{fl_y + 52}" font-family="'Geist','Segoe UI',sans-serif" font-size="26" font-weight="600" fill="{p["ink"]}">classifier</text>
+  <text x="{c1_x + 24}" y="{fl_y + 86}" font-family="'Geist','Segoe UI',sans-serif" font-size="15" fill="{p["argument"]}">the product that has to be right</text>
+  <text x="{c1_x + 24}" y="{fl_y + 112}" font-family="'Geist Mono',Consolas,monospace" font-size="12" fill="{p["meta"]}">sanlee-ys/classifier</text>
+{connector(p, c1_x + c1_w, c2_x - 14, mid_y, "0s")}
+  <rect x="{c2_x}" y="{fl_y}" width="{c2_w}" height="{fl_h}" rx="10" fill="{p["elevated"]}" stroke="{p["border"]}" stroke-width="1"/>
+  <text x="{c2_x + 24}" y="{fl_y + 52}" font-family="'Geist','Segoe UI',sans-serif" font-size="24" font-weight="600" fill="{p["ink"]}">faithfulness-judge</text>
+  <text x="{c2_x + 24}" y="{fl_y + 86}" font-family="'Geist','Segoe UI',sans-serif" font-size="15" fill="{p["argument"]}">checks the claims before they land</text>
+  <text x="{c2_x + 24}" y="{fl_y + 112}" font-family="'Geist Mono',Consolas,monospace" font-size="12" fill="{p["meta"]}">sanlee-ys/faithfulness-judge</text>
+{connector(p, c2_x + c2_w, site_x - 14, mid_y, "-0.8s")}
+  <rect x="{site_x}" y="{fl_y + 24}" width="{site_w}" height="{fl_h - 48}" rx="10" fill="{p["button_fill"]}" stroke="{p["button_stroke"]}" stroke-width="1"/>
+  <text x="{site_x + site_w // 2}" y="{fl_y + 86}" font-family="'Geist','Segoe UI',sans-serif" font-size="24" font-weight="600" text-anchor="middle" fill="{p["button_text"]}">sanlee.me</text>
+  <text x="{site_x + site_w // 2}" y="{fl_y + 114}" font-family="'Geist','Segoe UI',sans-serif" font-size="13" text-anchor="middle" fill="{p["meta"]}">the public face</text>
+
+{drop(p, 260, fl_y + fl_h, ao_y + 16, "wire", "0s")}
+{drop(p, 654, fl_y + fl_h, ao_y + 16, "wire", "-0.9s")}
+{repo_tab(p, 72, ao_y)}
+  <rect x="{x0}" y="{ao_y + 16}" width="{inner}" height="{ao_h}" rx="10" fill="{p["elevated"]}" stroke="{p["accent"]}" stroke-width="1.4"/>
+  <text x="80" y="{ao_y + 54}" font-family="'Geist','Segoe UI',sans-serif" font-size="26" font-weight="600" fill="{p["ink"]}">agent-ops</text>
+  <text x="232" y="{ao_y + 54}" font-family="'Geist Mono',Consolas,monospace" font-size="13" fill="{p["meta"]}">sanlee-ys/agent-ops</text>
+  <text x="80" y="{ao_y + 80}" font-family="'Geist','Segoe UI',sans-serif" font-size="14" fill="{p["accent"]}">operating layer · wires the fence</text>
+  <text x="80" y="{ao_y + 122}" font-family="'Geist','Segoe UI',sans-serif" font-size="14" fill="{p["argument"]}">the contracts, the guards, and the postmortems under the work</text>
+{ao_cell_svg}
 </svg>
 '''
 
