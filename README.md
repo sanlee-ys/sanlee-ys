@@ -1,18 +1,16 @@
 # San Lee
 
 Senior Product Associate at JPMorganChase in Employee Platforms — working on product
-for SharePoint Online and OneDrive, the collaboration surface every line of business
-in the firm uses. On the side I build AI systems in the open, run the way a technical
-program manager runs a program: I set the direction, the contracts, and the bar;
-Claude does most of the typing across a five-vendor agent fleet (Claude, Codex,
-Cursor, Antigravity, Grok); the evals and postmortems are the proof. The public
-repos are the parts. How they fit together is on the portfolio:
+for SharePoint Online and OneDrive. On the side I build AI systems in the open:
+I set the direction, the contracts, and the bar; Claude does most of the typing
+across Claude, Codex, Antigravity, Pi, and Grok. The evals and postmortems are
+the proof. How the public repos fit together is on the portfolio:
 
 <a href="https://sanlee.me">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/one-system-v8-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="images/one-system-v8-light.svg">
-    <img alt="See it as one system: classifier flows through faithfulness-judge to sanlee.me, with telltale observing from above" src="images/one-system-v8-dark.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="images/one-system-v9-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="images/one-system-v9-light.svg">
+    <img alt="See it as one system: telltale and agent-ops in their own repo boxes around classifier, faithfulness-judge, and sanlee.me" src="images/one-system-v9-dark.svg">
   </picture>
 </a>
 
